@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUni-CarRental", "SoftUni-CarRental\SoftUni-CarRental.csproj", "{71D818CE-6E02-421A-BE97-5F9D8C4C3724}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftUni-CarRental", "SoftUni-CarRental\SoftUni-CarRental.csproj", "{71D818CE-6E02-421A-BE97-5F9D8C4C3724}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUni-CarRental.Models", "SoftUni-CarRental.Models\SoftUni-CarRental.Models.csproj", "{1E330476-F40F-4A75-917A-1B34868FFA0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftUni-CarRental.Models", "SoftUni-CarRental.Models\SoftUni-CarRental.Models.csproj", "{1E330476-F40F-4A75-917A-1B34868FFA0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUni-CarRental.Database", "SoftUni-CarRental.Database\SoftUni-CarRental.Database.csproj", "{1720F587-1B4C-485B-B5FB-30D30FFD2D93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftUni-CarRental.Database", "SoftUni-CarRental.Database\SoftUni-CarRental.Database.csproj", "{1720F587-1B4C-485B-B5FB-30D30FFD2D93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUni-CarRental.Services", "SoftUni-CarRental.Services\SoftUni-CarRental.Services.csproj", "{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftUni-CarRental.Services", "SoftUni-CarRental.Services\SoftUni-CarRental.Services.csproj", "{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUni-CarRental.Common", "SoftUni-CarRental.Common\SoftUni-CarRental.Common.csproj", "{864F6061-93EF-42D8-83F2-E65FAEAA0FB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{864F6061-93EF-42D8-83F2-E65FAEAA0FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864F6061-93EF-42D8-83F2-E65FAEAA0FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864F6061-93EF-42D8-83F2-E65FAEAA0FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{864F6061-93EF-42D8-83F2-E65FAEAA0FB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
