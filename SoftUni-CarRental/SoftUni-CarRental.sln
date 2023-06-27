@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUni-CarRental.Models", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUni-CarRental.Database", "SoftUni-CarRental.Database\SoftUni-CarRental.Database.csproj", "{1720F587-1B4C-485B-B5FB-30D30FFD2D93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftUni-CarRental.Services", "SoftUni-CarRental.Services\SoftUni-CarRental.Services.csproj", "{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{1720F587-1B4C-485B-B5FB-30D30FFD2D93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1720F587-1B4C-485B-B5FB-30D30FFD2D93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1720F587-1B4C-485B-B5FB-30D30FFD2D93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF76EFFE-CB11-4C1A-AC4E-47E2B9A9806B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
