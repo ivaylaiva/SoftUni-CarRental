@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SoftUni_CarRental.Data;
+using SoftUni_CarRental.Database;
+using SoftUni_CarRental.Models.Models;
 
 namespace SoftUni_CarRental
 {
@@ -16,7 +17,7 @@ namespace SoftUni_CarRental
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddIdentity<User, Role>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<CarRentalDbContext>();
             builder.Services.AddControllersWithViews();
 
