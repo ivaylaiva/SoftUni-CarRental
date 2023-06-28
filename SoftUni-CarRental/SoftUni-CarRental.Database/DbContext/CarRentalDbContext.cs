@@ -5,7 +5,7 @@ using SoftUni_CarRental.Models.Models;
 
 namespace SoftUni_CarRental.Database
 {
-    public class CarRentalDbContext : IdentityDbContext<User, Role, string>
+    public class CarRentalDbContext : IdentityDbContext
     {
         public CarRentalDbContext(DbContextOptions<CarRentalDbContext> options)
             : base(options)
@@ -18,23 +18,23 @@ namespace SoftUni_CarRental.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Role>().HasData(
-                new Role
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole
                 {
                     Id = "1",
                     Name = "member",
                     NormalizedName = "MEMBER",
                 },
-                new Role
+                new IdentityRole
                 {
                     Id = "2",
                     Name = "admin",
                     NormalizedName = "ADMIN",
                 });
 
-            var hasher = new PasswordHasher<User>();
+            var hasher = new PasswordHasher<IdentityUser>();
 
-            User admin = new User
+            IdentityUser admin = new IdentityUser
             {
                 Id = "1",
                 UserName = "admin@carrental.com",
