@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SoftUni_CarRental.Models.Abstraction;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SoftUni_CarRental.Models.Models
 {
-    internal class Photo
+    public class Photo : EntityAbstraction
     {
+        public byte[] PhotoBytes { get; set; } = null!;
+
+        [ForeignKey(nameof(Car))]
+        public int CarId { get; set; }
+        public Car Car { get; set; } = null!;
     }
 }
