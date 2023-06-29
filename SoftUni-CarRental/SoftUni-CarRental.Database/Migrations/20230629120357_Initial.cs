@@ -221,17 +221,30 @@ namespace SoftUni_CarRental.Database.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "1", "6208572a-37b4-4390-aa32-5d3ea00c4792", "member", "MEMBER" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2", "698db9b5-87fd-45b0-b5fd-db2d2ac132b9", "admin", "ADMIN" });
+                values: new object[,]
+                {
+                    { "478dbae5-8fb0-4105-9ad1-0583aaca29c4", "226a8c6e-78e7-40a5-b102-0c71b0e1677d", "Admin", "ADMIN" },
+                    { "bd6d8998-181d-4439-aa9d-9f2d9f46fdc0", "665e2780-9f7a-4304-ac65-30f8cb8ddf74", "Member", "MEMBER" }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "84fe513b-bc6b-4a47-bab2-4e0dff7003bf", "admin@carrental.com", false, false, null, "ADMIN@CARRENTAL.COM", "ADMIN@CARRENTAL.COM", "AQAAAAEAACcQAAAAEBrzAjZLmfowcBwtgtA223dHSW906l4VVlmbtoGbuiPODDTKkuTSTCmDLD108iwpcw==", null, false, "7I5VHIJTSZNOT3KDWKNFUV5PVYBHGXN", false, "admin@carrental.com" });
+                values: new object[,]
+                {
+                    { "063713c0-a28f-4bff-8ce1-de55755c0541", 0, "4e54a7bd-5ddb-4f65-922d-a04f185e0df5", "admin@carrental.com", false, false, null, "ADMIN@CARRENTAL.COM", "ADMIN@CARRENTAL.COM", "AQAAAAEAACcQAAAAEMSelT1zLz8chOzy4RHguIz4CDoct3SDlcgFKvfhBimr20JxrN6lzijPV0ZmU9udZQ==", null, false, "4842568d-7400-407c-bb74-a25f5fbaa824", false, "admin@carrental.com" },
+                    { "587e78f5-5136-4abb-9a52-96fca91fe09a", 0, "efe63a93-3e7f-4ed0-ab87-1476286d68d1", "member@carrental.com", false, false, null, "MEMBER@CARRENTAL.COM", "MEMBER@CARRENTAL.COM", "AQAAAAEAACcQAAAAEF5NYjByvarK6g/fuBi2Esop/WWLCBHB1LjK27MhdYU7XY68Rsqv5mqEWzhJUEx1zQ==", null, false, "8797249d-40b9-4a5d-b1f3-898873db7ddb", false, "member@carrental.com" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "478dbae5-8fb0-4105-9ad1-0583aaca29c4", "063713c0-a28f-4bff-8ce1-de55755c0541" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "bd6d8998-181d-4439-aa9d-9f2d9f46fdc0", "587e78f5-5136-4abb-9a52-96fca91fe09a" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

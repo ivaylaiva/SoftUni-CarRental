@@ -11,7 +11,7 @@ namespace SoftUni_CarRental
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            
+
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<CarRentalDbContext>(options =>
@@ -19,13 +19,22 @@ namespace SoftUni_CarRental
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-                .AddEntityFrameworkStores<CarRentalDbContext>();
+            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+            //    .AddEntityFrameworkStores<CarRentalDbContext>();
+            builder.Services.AddIdentity<User, Role>(options =>
+            {
+                options.Stores.MaxLengthForKeys = 128;
+            })
+                .AddEntityFrameworkStores<CarRentalDbContext>()
+                .AddDefaultUI()
+                .AddDefaultTokenProviders()
+                .AddRoles<Role>();
+
             builder.Services.AddRazorPages();
 
             builder.Services.AddControllersWithViews();
 
-            
+
 
             var app = builder.Build();
 
@@ -50,7 +59,7 @@ namespace SoftUni_CarRental
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
 
             app.MapControllerRoute(
                 name: "default",

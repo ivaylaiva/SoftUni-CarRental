@@ -1,20 +1,37 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using SoftUni_CarRental.Models;
+using SoftUni_CarRental.Models.Models;
 using System.Diagnostics;
 
 namespace SoftUni_CarRental.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly UserManager<User> _userManager;
         private readonly ILogger<HomeController> _logger;
+        private readonly SignInManager<User> _signInManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, UserManager<User> userManager,
+            SignInManager<User> signInManager)
         {
-            _logger = logger;
+            this._logger = logger;
+            this._userManager = userManager;
+            this._signInManager = signInManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            if(_signInManager.IsSignedIn(User))
+            {
+                var user = await _userManager.FindByNameAsync(User.Identity.Name);
+                var rolename = await _userManager.GetRolesAsync(user);
+                if (rolename[0] == "Admin")
+                {
+
+                }
+            }
+           
             return View();
         }
 
