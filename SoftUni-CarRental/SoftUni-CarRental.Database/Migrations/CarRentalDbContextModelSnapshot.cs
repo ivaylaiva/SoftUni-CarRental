@@ -113,13 +113,13 @@ namespace SoftUni_CarRental.Database.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "063713c0-a28f-4bff-8ce1-de55755c0541",
-                            RoleId = "478dbae5-8fb0-4105-9ad1-0583aaca29c4"
+                            UserId = "0a199039-a477-48ba-a810-6c7a52581f61",
+                            RoleId = "80b0fff5-4d1c-4418-9446-cfd478d80c43"
                         },
                         new
                         {
-                            UserId = "587e78f5-5136-4abb-9a52-96fca91fe09a",
-                            RoleId = "bd6d8998-181d-4439-aa9d-9f2d9f46fdc0"
+                            UserId = "4764a180-df76-4d4e-9e59-1f09713ea0d1",
+                            RoleId = "5c2dea1e-fd9d-4be1-acb5-5fb1dbc8c375"
                         });
                 });
 
@@ -178,10 +178,15 @@ namespace SoftUni_CarRental.Database.Migrations
                     b.Property<int>("PassengersCount")
                         .HasColumnType("int");
 
+                    b.Property<int>("PhotoId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("PricePerDay")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PhotoId");
 
                     b.ToTable("Cars");
                 });
@@ -223,9 +228,6 @@ namespace SoftUni_CarRental.Database.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CarId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -237,8 +239,6 @@ namespace SoftUni_CarRental.Database.Migrations
                         .HasColumnType("varbinary(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CarId");
 
                     b.ToTable("Photos");
                 });
@@ -272,15 +272,15 @@ namespace SoftUni_CarRental.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "bd6d8998-181d-4439-aa9d-9f2d9f46fdc0",
-                            ConcurrencyStamp = "665e2780-9f7a-4304-ac65-30f8cb8ddf74",
+                            Id = "5c2dea1e-fd9d-4be1-acb5-5fb1dbc8c375",
+                            ConcurrencyStamp = "f5accf6e-f6ce-4217-959e-42744c12bba5",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "478dbae5-8fb0-4105-9ad1-0583aaca29c4",
-                            ConcurrencyStamp = "226a8c6e-78e7-40a5-b102-0c71b0e1677d",
+                            Id = "80b0fff5-4d1c-4418-9446-cfd478d80c43",
+                            ConcurrencyStamp = "8e352aa4-6e71-410a-9f07-746e6d576a3f",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -353,33 +353,33 @@ namespace SoftUni_CarRental.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "063713c0-a28f-4bff-8ce1-de55755c0541",
+                            Id = "0a199039-a477-48ba-a810-6c7a52581f61",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4e54a7bd-5ddb-4f65-922d-a04f185e0df5",
+                            ConcurrencyStamp = "4361880b-ee86-47ec-96f2-f17be6b9faf7",
                             Email = "admin@carrental.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@CARRENTAL.COM",
                             NormalizedUserName = "ADMIN@CARRENTAL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEMSelT1zLz8chOzy4RHguIz4CDoct3SDlcgFKvfhBimr20JxrN6lzijPV0ZmU9udZQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOZpXr0vSQK5674L+CxbG1t0G1rT4F/4Et0N0m/M1fc3u5ovIbzB20QjLSi7vNgC2A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "4842568d-7400-407c-bb74-a25f5fbaa824",
+                            SecurityStamp = "342a7f60-24d6-4afe-b2e5-2cd5d9385c8e",
                             TwoFactorEnabled = false,
                             UserName = "admin@carrental.com"
                         },
                         new
                         {
-                            Id = "587e78f5-5136-4abb-9a52-96fca91fe09a",
+                            Id = "4764a180-df76-4d4e-9e59-1f09713ea0d1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "efe63a93-3e7f-4ed0-ab87-1476286d68d1",
+                            ConcurrencyStamp = "ebee0b88-1182-44b2-9c94-99bbfc226a00",
                             Email = "member@carrental.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "MEMBER@CARRENTAL.COM",
                             NormalizedUserName = "MEMBER@CARRENTAL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEF5NYjByvarK6g/fuBi2Esop/WWLCBHB1LjK27MhdYU7XY68Rsqv5mqEWzhJUEx1zQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAEMMwNdFKWlx60S/bEOAB14dP0gBvNF5zQuFQMLHqEDvZI8F5r89jusDk2inDea0g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "8797249d-40b9-4a5d-b1f3-898873db7ddb",
+                            SecurityStamp = "65029943-f240-49ff-acfc-5f1d683d193d",
                             TwoFactorEnabled = false,
                             UserName = "member@carrental.com"
                         });
@@ -436,18 +436,18 @@ namespace SoftUni_CarRental.Database.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SoftUni_CarRental.Models.Models.CarCard", b =>
+            modelBuilder.Entity("SoftUni_CarRental.Models.Models.Car", b =>
                 {
-                    b.HasOne("SoftUni_CarRental.Models.Models.Car", "Car")
+                    b.HasOne("SoftUni_CarRental.Models.Models.Photo", "Photo")
                         .WithMany()
-                        .HasForeignKey("CarId")
+                        .HasForeignKey("PhotoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Car");
+                    b.Navigation("Photo");
                 });
 
-            modelBuilder.Entity("SoftUni_CarRental.Models.Models.Photo", b =>
+            modelBuilder.Entity("SoftUni_CarRental.Models.Models.CarCard", b =>
                 {
                     b.HasOne("SoftUni_CarRental.Models.Models.Car", "Car")
                         .WithMany()

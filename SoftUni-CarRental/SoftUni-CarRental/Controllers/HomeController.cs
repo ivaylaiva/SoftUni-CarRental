@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SoftUni_CarRental.Constants;
 using SoftUni_CarRental.Models;
 using SoftUni_CarRental.Models.Models;
 using System.Diagnostics;
@@ -26,9 +28,10 @@ namespace SoftUni_CarRental.Controllers
             {
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 var rolename = await _userManager.GetRolesAsync(user);
-                if (rolename[0] == "Admin")
-                {
 
+                if (rolename[0] == UserRoleConstants.Admin)
+                {
+                    return View("~/Views/Home/Index_Admin.cshtml");
                 }
             }
            

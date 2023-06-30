@@ -1,5 +1,6 @@
 ﻿using SoftUni_CarRental.Models.Abstraction;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static SoftUni_CarRental.Common.EntityValidations.EntityValidationConstants.Car;
 
 namespace SoftUni_CarRental.Models.Models
@@ -25,6 +26,10 @@ namespace SoftUni_CarRental.Models.Models
         [Required]
         [MaxLength(MaxDescriptionLength)]
         public string Description { get; set; } = null!;
+
+        [ForeignKey(nameof(Photo))]
+        public int PhotoId { get; set; }
+        public Photo Photo { get; set; }
 
     }
 }

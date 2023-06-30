@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using SoftUni_CarRental.Models.Models;
+@using SoftUni_CarRental.Constants;
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 
@@ -23,7 +24,7 @@
     <link rel="stylesheet" href="~/css/aos.css">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-  
+
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="~/css/style.css">
@@ -48,14 +49,15 @@
 
                     <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                         <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                            <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                            <li><a href="listing.html" class="nav-link">Listing</a></li>
-                            <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
-                            <li><a href="blog.html" class="nav-link">Blog</a></li>
-                            <li><a href="about.html" class="nav-link">About</a></li>
-                            <li><a href="contact.html" class="nav-link">Contact</a></li>
-                            @if (SignInManager.IsSignedIn(User))
+                           
+                            @if (SignInManager.IsSignedIn(User) && User.IsInRole(UserRoleConstants.Admin))
                             {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Car" asp-action="Create" method="get">Create Car</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Car" asp-action="GetAllCars">All Cars</a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
                                 </li>
@@ -65,8 +67,33 @@
                                     </form>
                                 </li>
                             }
+
+                            else if (SignInManager.IsSignedIn(User))
+                            {
+                                <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                                <li><a href="listing.html" class="nav-link">Listing</a></li>
+                                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                                <li><a href="about.html" class="nav-link">About</a></li>
+                                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+                                </li>
+                                <li class="nav-item">
+                                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                    </form>
+                                </li>
+                            }
+
                             else
                             {
+                                <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                                <li><a href="listing.html" class="nav-link">Listing</a></li>
+                                <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+                                <li><a href="blog.html" class="nav-link">Blog</a></li>
+                                <li><a href="about.html" class="nav-link">About</a></li>
+                                <li><a href="contact.html" class="nav-link">Contact</a></li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
                                 </li>
