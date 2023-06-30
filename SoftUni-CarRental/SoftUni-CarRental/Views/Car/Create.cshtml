@@ -4,13 +4,12 @@
 }
 <h1 class="new-center">Create</h1>
 <hr />
-<div class="row new-center" >
-    <div class="col-md-4">
-        <form asp-controller="Car" asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row new-center">
+    <div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+        <form asp-controller="Car" asp-action="Create" method="post">
             <div class="form-group">
-                <label asp-for="Model" class="control-label"></label>
-                <input asp-for="Model" class="form-control" />
+                <label asp-for="Model" class="form-label">Model</label>
+                <input asp-for="Model" class="form-control" aria-required="true" />
                 <span asp-validation-for="Model" class="text-danger"></span>
             </div>
             <div class="form-group">
