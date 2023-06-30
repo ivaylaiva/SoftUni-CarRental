@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SoftUni_CarRental.Constants;
-using SoftUni_CarRental.Models;
 using SoftUni_CarRental.Models.Models;
+using SoftUni_CarRental.ViewModels;
 using System.Diagnostics;
 
 namespace SoftUni_CarRental.Controllers

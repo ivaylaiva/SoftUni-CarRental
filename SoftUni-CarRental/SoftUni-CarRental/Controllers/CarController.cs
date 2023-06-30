@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using SoftUni_CarRental.Constants;
-using SoftUni_CarRental.Models.Car.FormModel;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
+using SoftUni_CarRental.ViewModels;
+
 
 namespace SoftUni_CarRental.Controllers
 {
+  
     public class CarController:Controller
     {
         private readonly UserManager<User> _userManager;
@@ -15,26 +17,27 @@ namespace SoftUni_CarRental.Controllers
         private readonly ICarService carService;
 
         public CarController(ILogger<CarController> logger, UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager, ICarService carService)
         {
             this._logger = logger;
             this._userManager = userManager;
             this._signInManager = signInManager;
+            this.carService = carService;
         }
         [HttpGet]
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(CarFormModel model)
+        public async Task<IActionResult> Create(CarFormModel carModel)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(carModel);
             }
            
-            await this..AddAsync(currentUserId, model);
+           await this.carService.AddCarAsync(carModel);
 
             //var random = new Random();
             //var photoName = random.Next();
@@ -61,7 +64,7 @@ namespace SoftUni_CarRental.Controllers
 
             //userDTO.ProfilePhoto = fileName;
             //await _photoService.UploadPhotoAsync(0, int.Parse(_userManager.GetUserId(User)), photoDTO);
-            return RedirectToAction("All", "Board");
+            return RedirectToAction("Create");
         }
     }
 }

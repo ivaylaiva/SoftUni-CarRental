@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SoftUni_CarRental.ViewModels;
 
 namespace SoftUni_CarRental.Services.Interfaces
 {
-    internal class ICarService
+    public interface ICarService
     {
+        Task AddCarAsync(CarFormModel carModel);
     }
 }

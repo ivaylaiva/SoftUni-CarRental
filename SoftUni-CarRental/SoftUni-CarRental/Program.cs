@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SoftUni_CarRental.Database;
 using SoftUni_CarRental.Models.Models;
+using SoftUni_CarRental.Services;
+using SoftUni_CarRental.Services.Interfaces;
 
 namespace SoftUni_CarRental
 {
@@ -29,6 +31,8 @@ namespace SoftUni_CarRental
                 .AddDefaultUI()
                 .AddDefaultTokenProviders()
                 .AddRoles<Role>();
+
+            builder.Services.AddScoped<ICarService, CarService>();
 
             builder.Services.AddRazorPages();
 

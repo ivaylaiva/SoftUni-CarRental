@@ -1,4 +1,4 @@
-﻿@model SoftUni_CarRental.Models.Models.Car;
+﻿@model SoftUni_CarRental.ViewModels.CarFormModel;
 @{
     ViewData["Title"] = "Create";
 }
@@ -38,7 +38,7 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="avatar">Choose a car picture:</label>
+                <label>Choose a car picture:</label>
                 <input type="file"
                        id="avatar" name="avatar"
                        accept="image/png, image/jpeg">

@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SoftUni-CarRental.Database\SoftUni-CarRental.Database.csproj" />
     <ProjectReference Include="..\SoftUni-CarRental.Services\SoftUni-CarRental.Services.csproj" />
+    <ProjectReference Include="..\SoftUni-CarRental.ViewModels\SoftUni-CarRental.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
