@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SoftUni_CarRental.Constants;
 using SoftUni_CarRental.Models.Car.FormModel;
 using SoftUni_CarRental.Models.Models;
+using SoftUni_CarRental.Services.Interfaces;
 
 namespace SoftUni_CarRental.Controllers
 {
@@ -11,6 +12,7 @@ namespace SoftUni_CarRental.Controllers
         private readonly UserManager<User> _userManager;
         private readonly ILogger<CarController> _logger;
         private readonly SignInManager<User> _signInManager;
+        private readonly ICarService carService;
 
         public CarController(ILogger<CarController> logger, UserManager<User> userManager,
             SignInManager<User> signInManager)
@@ -27,22 +29,12 @@ namespace SoftUni_CarRental.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CarFormModel model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    model.allBoards = await this.boardService.SelectBoardAsync();
-            //    return View(model);
-            //}
-            //bool existId = await this.boardService.ExistBoardById(model.BoardId);
-
-            //string currentUserId = this.GetUserId();
-
-            //if (!existId)
-            //{
-            //    model.allBoards = await this.boardService.SelectBoardAsync();
-            //    ModelState.AddModelError(nameof(model.BoardId), "Selected board does not exist!");
-            //    return View(model);
-            //}
-            //await this.taskService.AddAsync(currentUserId, model);
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+           
+            await this..AddAsync(currentUserId, model);
 
             //var random = new Random();
             //var photoName = random.Next();

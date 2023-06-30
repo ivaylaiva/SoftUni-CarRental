@@ -2,13 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>SoftUni_CarRental.Services</RootNamespace>
+    <RootNamespace>SoftUni_CarRental.ViewModels</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SoftUni-CarRental.Database\SoftUni-CarRental.Database.csproj" />
-  </ItemGroup>
 
 </Project>
