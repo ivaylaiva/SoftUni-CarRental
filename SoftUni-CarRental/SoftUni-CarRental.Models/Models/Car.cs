@@ -27,9 +27,8 @@ namespace SoftUni_CarRental.Models.Models
         [MaxLength(MaxDescriptionLength)]
         public string Description { get; set; } = null!;
 
-        [ForeignKey(nameof(Photo))]
-        public int PhotoId { get; set; }
-        public Photo Photo { get; set; }
+        [Required]
+        public string ImageUrl { get; set; } = null!;
 
     }
 }
