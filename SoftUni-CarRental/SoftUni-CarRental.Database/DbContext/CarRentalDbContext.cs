@@ -14,7 +14,7 @@ namespace SoftUni_CarRental.Database
         }
         public DbSet<Car> Cars { get; set; } = null!;
         public DbSet<CarCard> CarCards { get; set; } = null!;
-        public DbSet<Photo> Photos { get; set; } = null!;
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -49,18 +49,24 @@ namespace SoftUni_CarRental.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Photos",
+                name: "Cars",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PhotoBytes = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    Model = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PricePerDay = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DoorsCount = table.Column<int>(type: "int", nullable: false),
+                    PassengersCount = table.Column<int>(type: "int", nullable: false),
+                    Colour = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1500)", maxLength: 1500, nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Photos", x => x.Id);
+                    table.PrimaryKey("PK_Cars", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,33 +176,6 @@ namespace SoftUni_CarRental.Database.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Cars",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Model = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PricePerDay = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DoorsCount = table.Column<int>(type: "int", nullable: false),
-                    PassengersCount = table.Column<int>(type: "int", nullable: false),
-                    Colour = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1500)", maxLength: 1500, nullable: false),
-                    PhotoId = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cars", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Cars_Photos_PhotoId",
-                        column: x => x.PhotoId,
-                        principalTable: "Photos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "CarCards",
                 columns: table => new
                 {
@@ -223,8 +202,8 @@ namespace SoftUni_CarRental.Database.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "5c2dea1e-fd9d-4be1-acb5-5fb1dbc8c375", "f5accf6e-f6ce-4217-959e-42744c12bba5", "Member", "MEMBER" },
-                    { "80b0fff5-4d1c-4418-9446-cfd478d80c43", "8e352aa4-6e71-410a-9f07-746e6d576a3f", "Admin", "ADMIN" }
+                    { "71192333-1ad9-44ab-b04b-1b89f61bf5c6", "77894abe-2c0e-40b2-8641-417d0d0c7a9b", "Admin", "ADMIN" },
+                    { "e5306ae8-bfa3-4f89-9bb9-dabba349aea7", "53b7f16c-9997-449e-802d-4807670d0d2b", "Member", "MEMBER" }
                 });
 
             migrationBuilder.InsertData(
@@ -232,19 +211,19 @@ namespace SoftUni_CarRental.Database.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "0a199039-a477-48ba-a810-6c7a52581f61", 0, "4361880b-ee86-47ec-96f2-f17be6b9faf7", "admin@carrental.com", false, false, null, "ADMIN@CARRENTAL.COM", "ADMIN@CARRENTAL.COM", "AQAAAAEAACcQAAAAEOZpXr0vSQK5674L+CxbG1t0G1rT4F/4Et0N0m/M1fc3u5ovIbzB20QjLSi7vNgC2A==", null, false, "342a7f60-24d6-4afe-b2e5-2cd5d9385c8e", false, "admin@carrental.com" },
-                    { "4764a180-df76-4d4e-9e59-1f09713ea0d1", 0, "ebee0b88-1182-44b2-9c94-99bbfc226a00", "member@carrental.com", false, false, null, "MEMBER@CARRENTAL.COM", "MEMBER@CARRENTAL.COM", "AQAAAAEAACcQAAAAEAEMMwNdFKWlx60S/bEOAB14dP0gBvNF5zQuFQMLHqEDvZI8F5r89jusDk2inDea0g==", null, false, "65029943-f240-49ff-acfc-5f1d683d193d", false, "member@carrental.com" }
+                    { "1fd51f8d-722c-4e8d-9a63-445d96295860", 0, "a764aecc-79e0-4104-a7e8-73a0cd065578", "admin@carrental.com", false, false, null, "ADMIN@CARRENTAL.COM", "ADMIN@CARRENTAL.COM", "AQAAAAEAACcQAAAAEAE0i/Z5d4bKBDk/C9E3AIMbPGXrAO3Hn/3UFaV0xwW+0RsOcMnZVahdm53uDsByyg==", null, false, "1fb0da18-0920-4e48-b534-1d30d2d42d2b", false, "admin@carrental.com" },
+                    { "9baa3dcb-3f8c-4ba1-9573-03b85ea95dda", 0, "6315548f-c0ae-4a5a-b7dd-248adba446de", "member@carrental.com", false, false, null, "MEMBER@CARRENTAL.COM", "MEMBER@CARRENTAL.COM", "AQAAAAEAACcQAAAAEJrHvv4wFO3myCCq8Xf7uQxXokux530+GbqdVKceoneYKtc8bi2Ta/JXbi0ANopvSg==", null, false, "742e40c1-032d-4151-a457-eee1ae18dcc3", false, "member@carrental.com" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "80b0fff5-4d1c-4418-9446-cfd478d80c43", "0a199039-a477-48ba-a810-6c7a52581f61" });
+                values: new object[] { "71192333-1ad9-44ab-b04b-1b89f61bf5c6", "1fd51f8d-722c-4e8d-9a63-445d96295860" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "5c2dea1e-fd9d-4be1-acb5-5fb1dbc8c375", "4764a180-df76-4d4e-9e59-1f09713ea0d1" });
+                values: new object[] { "e5306ae8-bfa3-4f89-9bb9-dabba349aea7", "9baa3dcb-3f8c-4ba1-9573-03b85ea95dda" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -289,11 +268,6 @@ namespace SoftUni_CarRental.Database.Migrations
                 name: "IX_CarCards_CarId",
                 table: "CarCards",
                 column: "CarId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Cars_PhotoId",
-                table: "Cars",
-                column: "PhotoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -324,9 +298,6 @@ namespace SoftUni_CarRental.Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cars");
-
-            migrationBuilder.DropTable(
-                name: "Photos");
         }
     }
 }

@@ -38,6 +38,7 @@ namespace SoftUni_CarRental.Controllers
             }
            
            await this.carService.AddCarAsync(carModel);
+           return RedirectToAction("GetAllCars");
 
             //var random = new Random();
             //var photoName = random.Next();
@@ -64,7 +65,12 @@ namespace SoftUni_CarRental.Controllers
 
             //userDTO.ProfilePhoto = fileName;
             //await _photoService.UploadPhotoAsync(0, int.Parse(_userManager.GetUserId(User)), photoDTO);
-            return RedirectToAction("Create");
+
+        }
+        public async Task<IActionResult> GetAllCars()
+        {
+            var model = await carService.AllAsync();
+            return View(model);
         }
     }
 }

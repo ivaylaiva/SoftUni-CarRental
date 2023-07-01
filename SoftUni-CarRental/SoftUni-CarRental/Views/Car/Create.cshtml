@@ -37,29 +37,28 @@
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label>Choose a car picture:</label>
-                <input type="file"
-                       id="avatar" name="avatar"
-                       accept="image/png, image/jpeg">
+            <div class="mb-3">
+                <label asp-for="ImageUrl" class="form-label">Image URL</label>
+                <input asp-for="ImageUrl" class="form-control" aria-required="true" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
                 <div>
-                    <a asp-action="Index">Back to List</a>
+                    <a asp-action="GetAllCars">Back to List</a>
                 </div>
             </div>
         </form>
     </div>
     @section Scripts{
         <partial name="_ValidationScriptsPartial" />
-        <script type="text/javascript">
+       @* <script type="text/javascript">
             // Add the following code if you want the name of the file appear on select
             $(".custom-file-input").on("change", function () {
                 var fileName = $(this).val().split("\\").pop();
                 $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             });
-        </script>
+        </script>*@
     }
 </div>
 
