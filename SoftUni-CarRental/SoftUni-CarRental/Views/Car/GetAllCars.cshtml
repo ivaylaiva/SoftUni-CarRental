@@ -1,19 +1,17 @@
 ﻿@model IEnumerable<AllCarsViewModel>
-@{
-    ViewBag.Title = "All Cars";
-}
+
 
 <h2 class="text-center">@ViewBag.Title</h2>
 <hr />
 
-<div class="text-center row">
+<div class="text-center row new-center">
     @foreach (var car in Model)
     {
         <div class="card col-4" style="width: 20rem; ">
             <img class="card-img-top" style="width: 18rem;"
-             src="@car.ImageUrl" alt="Car Image">
-            <div class="card-body">
+              src="@car.ImageUrl" alt="Car Image">
 
+            <div class="card-body">
                 <h5 class="card-title mt-1">@car.Model</h5>
                 <p class="mb-0">Colour: @car.Colour</p>
                 <p class="mb-0">Door count: @car.DoorsCount</p>
@@ -33,5 +31,6 @@
                 <input type="submit" value="Add to Collection" class="fs-6 btn btn-success mb-3 p-2" />
             </form>*@
         </div>
+        
     }
 </div>
