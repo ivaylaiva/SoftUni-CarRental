@@ -7,5 +7,7 @@ namespace SoftUni_CarRental.Services.Interfaces
     {
         Task AddCarAsync(CarFormModel carModel);
         Task<IEnumerable<AllCarsViewModel>> AllAsync();
+        Task<EditCarViewModel> GetIdForEdit(int id);
+        Task EditCarById(int id,EditCarViewModel model);
     }
 }

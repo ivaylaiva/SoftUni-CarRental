@@ -1,14 +1,13 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels;
-
+using SoftUni_CarRental.ViewModels.Car.FormModel;
 
 namespace SoftUni_CarRental.Controllers
 {
-  
+
     public class CarController:Controller
     {
         private readonly UserManager<User> _userManager;
@@ -72,9 +71,38 @@ namespace SoftUni_CarRental.Controllers
             var model = await carService.AllAsync();
             return View(model);
         }
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            try
+            {
+                EditCarViewModel model = await this.carService
+                    .GetIdForEdit(id);
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return RedirectToAction("GetAllCars");
+            }
+           
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditCarViewModel editmodel,int id)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(editmodel);
+            }
+            try
+            {
+                await this.carService.EditCarById(id,editmodel);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Unexpected Error while editing");
+                return View(editmodel);
+            }
+            return RedirectToAction("GetAllCars");
         }
     }
 }

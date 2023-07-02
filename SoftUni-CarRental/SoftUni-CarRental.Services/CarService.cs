@@ -48,6 +48,41 @@ namespace SoftUni_CarRental.Services
                })
                .ToListAsync();
         }
+
+        public async Task EditCarById(int id, EditCarViewModel model)
+        {
+            Car car = await this.dbContext
+                .Cars
+                .FindAsync(id);
+
+            car.Model = model.Model;
+            car.Colour = model.Colour;
+            car.Description = model.Description;
+            car.PricePerDay = model.PricePerDay;
+            car.ImageUrl = model.ImageUrl;
+            car.PassengersCount = model.PassengersCount;
+            car.DoorsCount = model.DoorsCount;
+
+            await this.dbContext.SaveChangesAsync();
+        }
+
+        public async Task<EditCarViewModel> GetIdForEdit(int id)
+        {
+            Car car = await this.dbContext
+                .Cars
+                .FindAsync(id);
+
+            return new EditCarViewModel()
+            {
+                Model = car.Model,
+                DoorsCount = car.DoorsCount,
+                Description = car.Description,
+                PassengersCount = car.PassengersCount,
+                PricePerDay = car.PricePerDay,
+                Colour = car.Colour,
+                ImageUrl = car.ImageUrl,
+            };
+        }
     }
     
 }
