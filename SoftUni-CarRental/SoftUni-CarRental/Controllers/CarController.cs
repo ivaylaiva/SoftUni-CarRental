@@ -72,5 +72,9 @@ namespace SoftUni_CarRental.Controllers
             var model = await carService.AllAsync();
             return View(model);
         }
+        public async Task<IActionResult> Edit(int id)
+        {
+            return View();
+        }
     }
 }
