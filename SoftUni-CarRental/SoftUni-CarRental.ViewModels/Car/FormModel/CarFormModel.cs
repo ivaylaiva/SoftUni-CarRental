@@ -9,5 +9,6 @@ public class CarFormModel
     public string Colour { get; set; } = null!;
     public string Description { get; set; } = null!;
     public string ImageUrl { get; set; } = null!;
+    public string ButtonLabel { get; set; } = null!;
     //public int PhotoId { get; set; }
 }

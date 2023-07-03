@@ -4,15 +4,18 @@ using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels;
 using SoftUni_CarRental.ViewModels.Car.FormModel;
+using SoftUni_CarRental.ViewModels.CarCard;
 
 namespace SoftUni_CarRental.Services
 {
     public class CarService : ICarService
     {
         private readonly CarRentalDbContext dbContext;
-        public CarService(CarRentalDbContext dbContext)
+        private readonly ICarCardService cardService;
+        public CarService(CarRentalDbContext dbContext, ICarCardService cardService)
         {
             this.dbContext = dbContext;
+            this.cardService = cardService;
         }
         public async Task AddCarAsync(CarFormModel carModel)
         {
@@ -29,12 +32,21 @@ namespace SoftUni_CarRental.Services
             };
             await this.dbContext.Cars.AddAsync(car);
             await this.dbContext.SaveChangesAsync();
+
+            var carCardViewModel = new CarCardFormViewModel
+            {
+                ButtonLabel = carModel.ButtonLabel,
+                CarId = car.Id
+            };
+
+            await this.cardService.CreateCarCard(carCardViewModel);
         }
 
         public async Task<IEnumerable<AllCarsViewModel>> AllAsync()
         {
             return await this.dbContext
                .Cars
+               .Where(x=>x.IsDeleted == false)
                .Select(car => new AllCarsViewModel()
                {
                    Id = car.Id,
@@ -106,8 +118,8 @@ namespace SoftUni_CarRental.Services
         public async Task DeleteById(int id)
         {
             var car = dbContext.Cars.Find(id);
-            dbContext.Cars.Remove(car);
-             await dbContext.SaveChangesAsync();
+            car.IsDeleted = true;
+            await dbContext.SaveChangesAsync();
         }
     }
     

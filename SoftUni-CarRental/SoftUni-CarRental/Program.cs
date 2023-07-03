@@ -33,6 +33,7 @@ namespace SoftUni_CarRental
                 .AddRoles<Role>();
 
             builder.Services.AddScoped<ICarService, CarService>();
+            builder.Services.AddScoped<ICarCardService, CarCardService>();
 
             builder.Services.AddRazorPages();
 
