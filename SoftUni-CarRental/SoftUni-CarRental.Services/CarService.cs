@@ -36,7 +36,8 @@ namespace SoftUni_CarRental.Services
             var carCardViewModel = new CarCardFormViewModel
             {
                 ButtonLabel = carModel.ButtonLabel,
-                CarId = car.Id
+                CarId = car.Id,
+                Car = car,
             };
 
             await this.cardService.CreateCarCard(carCardViewModel);

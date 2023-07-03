@@ -4,6 +4,7 @@ using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels.Car.FormModel;
 using SoftUni_CarRental.ViewModels.CarCard;
+using System.Linq;
 
 namespace SoftUni_CarRental.Services
 {
@@ -20,6 +21,7 @@ namespace SoftUni_CarRental.Services
             {
                 ButtonLabel = carcardmodel.ButtonLabel,
                 CarId = carcardmodel.CarId,
+                Car = carcardmodel.Car
             };
             await this.dbContext.AddAsync(carCard);
             await this.dbContext.SaveChangesAsync();
@@ -33,16 +35,17 @@ namespace SoftUni_CarRental.Services
             await dbContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<AllCarCardViewModel>> GetAllCarCards()
+        public IEnumerable<AllCarCardViewModel> GetAllCarCards()
         {
-            return await this.dbContext
+            return this.dbContext
                  .CarCards
                  .Select(c => new AllCarCardViewModel()
                  {
                      ButtonLabel = c.ButtonLabel,
                      CarId = c.CarId,
+                     Car = c.Car
                  })
-                 .ToListAsync();
+                 .ToList();
         }
     }
 }

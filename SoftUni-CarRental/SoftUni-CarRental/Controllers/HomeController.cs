@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SoftUni_CarRental.Constants;
+using SoftUni_CarRental.Models.Home.ViewModels;
 using SoftUni_CarRental.Models.Models;
+using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels;
 using System.Diagnostics;
 
@@ -10,15 +12,15 @@ namespace SoftUni_CarRental.Controllers
     public class HomeController : Controller
     {
         private readonly UserManager<User> _userManager;
-        private readonly ILogger<HomeController> _logger;
         private readonly SignInManager<User> _signInManager;
+        private readonly ICarCardService _carCardService;
 
         public HomeController(ILogger<HomeController> logger, UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager, ICarCardService carCardService)
         {
-            this._logger = logger;
             this._userManager = userManager;
             this._signInManager = signInManager;
+            this._carCardService = carCardService;
         }
 
         public async Task<IActionResult> Index()
@@ -33,8 +35,11 @@ namespace SoftUni_CarRental.Controllers
                     return View("~/Views/Home/Index_Admin.cshtml");
                 }
             }
-           
-            return View();
+            var homePageViewModel = new HomePageViewModel()
+            {
+                AllCarCards = this._carCardService.GetAllCarCards()
+            };
+            return View(homePageViewModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
