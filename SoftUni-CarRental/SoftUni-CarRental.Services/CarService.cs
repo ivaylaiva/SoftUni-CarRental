@@ -49,8 +49,6 @@ namespace SoftUni_CarRental.Services
                .ToListAsync();
         }
 
-        
-
         public async Task EditCarById(int id, EditCarViewModel model)
         {
             Car car = await this.dbContext
