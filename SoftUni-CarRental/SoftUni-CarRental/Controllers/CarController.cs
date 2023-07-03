@@ -104,5 +104,36 @@ namespace SoftUni_CarRental.Controllers
             }
             return RedirectToAction("GetAllCars");
         }
+        public async Task<IActionResult> Details(int id)
+        {
+            try
+            {
+                DetailsCarViewModel model =
+                    await this.carService.GetForDetailsById(id);
+                return View(model);
+            }
+            catch (Exception)
+            {
+                return this.RedirectToAction("GetAllCars");
+
+            }
+        }
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            try
+            {
+                await this.carService.DeleteById(id);
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Unexpected Error while delete action");
+                return View();
+            }
+            return RedirectToAction("GetAllCars");
+        }
     }
 }

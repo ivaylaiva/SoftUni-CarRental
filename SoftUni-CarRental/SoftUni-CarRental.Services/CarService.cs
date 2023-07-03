@@ -49,6 +49,8 @@ namespace SoftUni_CarRental.Services
                .ToListAsync();
         }
 
+        
+
         public async Task EditCarById(int id, EditCarViewModel model)
         {
             Car car = await this.dbContext
@@ -64,6 +66,26 @@ namespace SoftUni_CarRental.Services
             car.DoorsCount = model.DoorsCount;
 
             await this.dbContext.SaveChangesAsync();
+        }
+
+        public async Task<DetailsCarViewModel> GetForDetailsById(int id)
+        {
+            DetailsCarViewModel model = await this.dbContext
+               .Cars
+               .Select(c => new DetailsCarViewModel
+               {
+                  Id = c.Id,
+                  Model = c.Model,
+                  PassengersCount= c.PassengersCount,
+                  PricePerDay= c.PricePerDay,
+                  Colour = c.Colour,
+                  Description = c.Description,
+                  DoorsCount= c.DoorsCount,
+                  CreatedOn= c.CreatedOn
+               })
+               .FirstAsync(t => t.Id == id);
+
+            return model;
         }
 
         public async Task<EditCarViewModel> GetIdForEdit(int id)
@@ -82,6 +104,12 @@ namespace SoftUni_CarRental.Services
                 Colour = car.Colour,
                 ImageUrl = car.ImageUrl,
             };
+        }
+        public async Task DeleteById(int id)
+        {
+            var car = dbContext.Cars.Find(id);
+            dbContext.Cars.Remove(car);
+             await dbContext.SaveChangesAsync();
         }
     }
     

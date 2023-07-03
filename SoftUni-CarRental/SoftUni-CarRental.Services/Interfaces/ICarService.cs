@@ -9,5 +9,7 @@ namespace SoftUni_CarRental.Services.Interfaces
         Task<IEnumerable<AllCarsViewModel>> AllAsync();
         Task<EditCarViewModel> GetIdForEdit(int id);
         Task EditCarById(int id,EditCarViewModel model);
+        Task<DetailsCarViewModel> GetForDetailsById(int id);
+        Task DeleteById(int id);
     }
 }

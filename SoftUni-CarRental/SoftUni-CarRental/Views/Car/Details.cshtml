@@ -1,0 +1,47 @@
+﻿@model DetailsCarViewModel
+<h2 class="text-center">@ViewBag.Title</h2>
+<hr />
+<div class="d-flex justify-content-center new-center">
+    <div class="card " style="width: 50rem;">
+        <div class="card-body">
+            <h3 class="card-title text-center">@Model.Model</h3>
+            <p class="card-text">
+                <span class="fw-bold">
+                    Door Count:
+                </span>@Model.DoorsCount
+            </p>
+            <p class="card-text">
+                <span class="fw-bold">
+                    Passenger Count:
+                </span>@Model.PassengersCount
+            </p>
+            <p class="card-text">
+                <span class="fw-bold">
+                    Colour:
+                </span>@Model.Colour
+            </p>
+            <p class="card-text">
+                <span class="fw-bold">
+                    Price Per Day:
+                </span>@Model.PricePerDay
+            </p>
+            <p class="card-text">
+                <span class="fw-bold">
+                    Description:
+                </span>@Model.Description
+            </p>
+            <p class="card-text">
+                <span class="fw-bold">
+                    The listing is created on:
+                </span>@Model.CreatedOn
+            </p>
+                <tr class="actions">
+                    <th><span class="fw-bold">Actions:</span></th>
+                    <td>
+                        <a asp-controller="Car" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+                    <a asp-controller="Car" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+        </div>
+    </div>
+</div>

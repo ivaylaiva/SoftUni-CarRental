@@ -6,10 +6,32 @@ html {
     margin-bottom: 0.5rem;
     font-weight: 700;
     line-height: 1.2;
-    margin-left: 33rem;
+    margin-left: 3rem;
+}
+.new-center-allCars {
+    margin-top: 10.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-left: 3rem;
+}
+.new-center-create {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-left: 3rem;
+}
+.new-center-login {
+    margin-top: 15.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-left: 6rem;
 }
 .font-size-10 {
-  font-size: 10px; }
+    font-size: 10px;
+}
 
 .font-size-11 {
   font-size: 11px; }
