@@ -47,5 +47,34 @@ namespace SoftUni_CarRental.Services
                  })
                  .ToList();
         }
+
+        public async Task<IEnumerable<AllCarCardViewModel>> SearchForCar(string model)
+        {
+            return await this.dbContext
+                .CarCards
+                .Where(x => x.Car.Model == model && x.Car.IsDeleted == false)
+                .Select(x => new AllCarCardViewModel()
+                {
+                    ButtonLabel = x.ButtonLabel,
+                    CarId = x.CarId,
+                    Car = x.Car
+                })
+                .ToListAsync();
+        }
+        public async Task<IEnumerable<string>> AllModels()
+        {
+            return await this.dbContext
+                .CarCards
+                .Where(x => x.Car.IsDeleted == false)
+                .Select(x => new AllCarCardViewModel()
+                {
+                    ButtonLabel = x.ButtonLabel,
+                    CarId = x.CarId,
+                    Car = x.Car
+                })
+                .Select(x => x.Car.Model)
+                .Distinct()
+                .ToListAsync();
+        }
     }
 }

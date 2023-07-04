@@ -12,16 +12,16 @@
                     </div>
                 </div>
 
-                <form class="trip-form">
+                <form asp-controller="Listing" asp-action="Search" class="trip-form">
 
                     <div class="row align-items-center">
 
                         <div class="mb-3 mb-md-0 col-md-3">
-                            <select name="" id="" class="custom-select form-control">
+                            <select name="model" id="" class="custom-select form-control">
                                 <option value="" disabled selected>Select Type</option>
-                                @foreach (var carModel in Model.AllCarCards)
+                                @foreach (var carModel in Model.AllCarsForSearch)
                                 {
-                                    <option value="@carModel.Car.Id">@carModel.Car.Model</option>
+                                    <option value="@carModel">@carModel</option>
                                 }
                             </select>
                         </div>

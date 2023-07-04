@@ -7,5 +7,7 @@ namespace SoftUni_CarRental.Services.Interfaces
         Task CreateCarCard(CarCardFormViewModel carcardmodel);
         IEnumerable<AllCarCardViewModel> GetAllCarCards();
         Task DeleteCarCard(int id);
+        Task <IEnumerable<AllCarCardViewModel>> SearchForCar(string model);
+        Task<IEnumerable<string>> AllModels();
     }
 }

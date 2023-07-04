@@ -71,7 +71,9 @@
                             else if (SignInManager.IsSignedIn(User))
                             {
                                 <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                                <li><a href="listing.html" class="nav-link">Listing</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Listing" asp-action="Index" title="Listing">Listing</a>
+                                </li>
                                 <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
                                 <li><a href="blog.html" class="nav-link">Blog</a></li>
                                 <li><a href="about.html" class="nav-link">About</a></li>
@@ -89,7 +91,9 @@
                             else
                             {
                                 <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                                <li><a href="listing.html" class="nav-link">Listing</a></li>
+                                <li>
+                                    <a class="nav-link" asp-controller="Listing" asp-action="Index" title="Listing">Listing</a>
+                                </li>
                                 <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
                                 <li><a href="blog.html" class="nav-link">Blog</a></li>
                                 <li><a href="about.html" class="nav-link">About</a></li>
