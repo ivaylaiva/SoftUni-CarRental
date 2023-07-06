@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SoftUni_CarRental.Services.Interfaces;
 
 namespace SoftUni_CarRental.Services
 {
-    internal class TestimonialService
+    public class TestimonialService : ITestimonialService
     {
+
     }
 }
