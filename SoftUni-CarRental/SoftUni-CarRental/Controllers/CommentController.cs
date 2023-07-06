@@ -23,7 +23,8 @@ namespace SoftUni_CarRental.Controllers
                 return View(model);
             }
             await this.commentService.CreateCommentAsync(model);
-            return RedirectToAction("~/Views/Testimonials/Index.cshtml");
+
+            return RedirectToAction("~/Testimonials/Index.cshtml");
         }
     }
 }

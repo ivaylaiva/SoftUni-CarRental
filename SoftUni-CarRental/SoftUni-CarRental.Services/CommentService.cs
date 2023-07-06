@@ -1,6 +1,7 @@
 ﻿using SoftUni_CarRental.Database;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
+using SoftUni_CarRental.ViewModels.CarCard;
 using SoftUni_CarRental.ViewModels.Comment;
 
 namespace SoftUni_CarRental.Services
@@ -22,6 +23,18 @@ namespace SoftUni_CarRental.Services
             };
             await this.dbContext.Comments.AddAsync(comment);
             await this.dbContext.SaveChangesAsync();
+        }
+
+        public IEnumerable<AllCommentViewModel> GetAllComments()
+        {
+            return this.dbContext
+                .Comments
+                .Select(c => new AllCommentViewModel()
+                {
+                   Description= c.Description,
+                   UserEmail= c.UserEmail,
+                })
+                .ToList();
         }
     }
 }
