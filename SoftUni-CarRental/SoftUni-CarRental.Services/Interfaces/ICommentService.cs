@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SoftUni_CarRental.ViewModels.Comment;
 
 namespace SoftUni_CarRental.Services.Interfaces
 {
-    internal interface ICommentService
+    public interface ICommentService
     {
+        Task CreateCommentAsync(CreateCommentViewModel model);
     }
 }

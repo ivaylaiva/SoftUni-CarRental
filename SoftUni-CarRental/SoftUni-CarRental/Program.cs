@@ -34,6 +34,8 @@ namespace SoftUni_CarRental
 
             builder.Services.AddScoped<ICarService, CarService>();
             builder.Services.AddScoped<ICarCardService, CarCardService>();
+            builder.Services.AddScoped<ICommentService, CommentService>();
+            builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 
             builder.Services.AddRazorPages();
 
