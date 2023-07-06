@@ -1,9 +1,14 @@
-﻿namespace SoftUni_CarRental.Models.Models
+﻿using SoftUni_CarRental.Models.Abstraction;
+using System.ComponentModel.DataAnnotations;
+using static SoftUni_CarRental.Common.EntityValidations.EntityValidationConstants.Comment;
+
+namespace SoftUni_CarRental.Models.Models
 {
-    public class Comment
+    public class Comment : EntityAbstraction
     {
-        public int Id { get; set; }
-        public string Description { get; set; }
-        public string UserEmail { get; set; }
+        [Required]
+        [MaxLength(MaxDescriptionLengthForComment)]
+        public string Description { get; set; } = null!;
+        public string UserEmail { get; set; } = null!;
     }
 }
