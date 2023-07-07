@@ -28,7 +28,14 @@ namespace SoftUni_CarRental.Controllers
 
         public async Task<IActionResult> Index()
         {
-            if(_signInManager.IsSignedIn(User))
+            var homePageViewModel = new HomePageViewModel()
+            {
+                AllCarCards = this._carCardService.GetAllCarCards(),
+                AllCarsForSearch = await this._carCardService.AllModels(),
+                AllComments = this.commentService.GetAllComments()
+            };
+
+            if (_signInManager.IsSignedIn(User))
             {
                 var user = await _userManager.FindByNameAsync(User.Identity.Name);
                 var rolename = await _userManager.GetRolesAsync(user);
@@ -37,13 +44,12 @@ namespace SoftUni_CarRental.Controllers
                 {
                     return View("~/Views/Home/Index_Admin.cshtml");
                 }
+                else
+                {
+                    return View("~/Views/Home/Index.cshtml");
+                }
             }
-            var homePageViewModel = new HomePageViewModel()
-            {
-                AllCarCards = this._carCardService.GetAllCarCards(),
-                AllCarsForSearch = await this._carCardService.AllModels(),
-                AllComments = this.commentService.GetAllComments()
-            };
+           
             
             return View(homePageViewModel);
         }
