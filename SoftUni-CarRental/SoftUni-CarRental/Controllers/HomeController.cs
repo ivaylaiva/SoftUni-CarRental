@@ -46,11 +46,11 @@ namespace SoftUni_CarRental.Controllers
                 }
                 else
                 {
-                    return View("~/Views/Home/Index.cshtml");
+                    return View("~/Views/Home/Index.cshtml", homePageViewModel);
                 }
             }
-           
-            
+
+
             return View(homePageViewModel);
         }
 

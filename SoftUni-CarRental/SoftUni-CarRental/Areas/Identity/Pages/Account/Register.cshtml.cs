@@ -19,13 +19,15 @@ namespace TaskBoardApp.Areas.Identity.Pages.Account
         private readonly UserManager<User> _userManager;
         private readonly IUserStore<User> _userStore;
         private readonly IIdentityUserRoleService _identityUserRole;
+        private readonly IIdentityRolesService _identityRolesService;
 
 
         public RegisterModel(
             UserManager<User> userManager,
             IUserStore<User> userStore,
             SignInManager<User> signInManager,
-            IIdentityUserRoleService identityUserRole
+            IIdentityUserRoleService identityUserRole,
+            IIdentityRolesService identityRolesService
             )
 
         {
@@ -33,7 +35,7 @@ namespace TaskBoardApp.Areas.Identity.Pages.Account
             _userStore = userStore;
             _signInManager = signInManager;
             _identityUserRole = identityUserRole;
-
+            _identityRolesService = identityRolesService;
         }
 
         /// <summary>
@@ -102,19 +104,16 @@ namespace TaskBoardApp.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
-                var allRoles = this._identityUserRole.AllRoles().ToList();
-               
-                allRoles.Add(new IdentityUserRole<string>
-                {
-                    UserId = user.Id,
-                    RoleId = allRoles.First(r => r.Name == "Member").Id
-                });
+                var allUserRoles = this._identityUserRole.AllRoles().ToList();
+
+                var allRoles = this._identityRolesService.AllRoles().ToList();
 
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _userManager.SetEmailAsync(user, Input.Email);
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
+                this._identityRolesService.CreateMemberUser(user, allRoles, allUserRoles);
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
