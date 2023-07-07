@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels.Comment;
+using SoftUni_CarRental.ViewModels.Testimonials;
 
 namespace SoftUni_CarRental.Controllers
 {
@@ -24,7 +25,12 @@ namespace SoftUni_CarRental.Controllers
             }
             await this.commentService.CreateCommentAsync(model);
 
-            return RedirectToAction("~/Testimonials/Index.cshtml");
+            var testimonialsViewModel = new TestimonialsPageViewModel()
+            {
+                AllComments = this.commentService.GetAllComments()
+            };
+
+            return View("~/Views/Testimonials/Index.cshtml",testimonialsViewModel);
         }
     }
 }
