@@ -5,8 +5,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using SoftUni_CarRental.Models.Models;
+using SoftUni_CarRental.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 
 namespace TaskBoardApp.Areas.Identity.Pages.Account
 {
@@ -15,18 +18,21 @@ namespace TaskBoardApp.Areas.Identity.Pages.Account
         private readonly SignInManager<User> _signInManager;
         private readonly UserManager<User> _userManager;
         private readonly IUserStore<User> _userStore;
+        private readonly IIdentityUserRoleService _identityUserRole;
 
 
         public RegisterModel(
             UserManager<User> userManager,
             IUserStore<User> userStore,
-            SignInManager<User> signInManager
+            SignInManager<User> signInManager,
+            IIdentityUserRoleService identityUserRole
             )
 
         {
             _userManager = userManager;
             _userStore = userStore;
             _signInManager = signInManager;
+            _identityUserRole = identityUserRole;
 
         }
 
@@ -51,8 +57,8 @@ namespace TaskBoardApp.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [StringLength(50,MinimumLength =6,ErrorMessage ="The username must be between 6 and 50 characters long!")]
-            [Display(Name ="Username")]
+            [StringLength(50, MinimumLength = 6, ErrorMessage = "The username must be between 6 and 50 characters long!")]
+            [Display(Name = "Username")]
             public string UserName { get; set; }
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -96,8 +102,16 @@ namespace TaskBoardApp.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                var allRoles = this._identityUserRole.AllRoles().ToList();
+               
+                allRoles.Add(new IdentityUserRole<string>
+                {
+                    UserId = user.Id,
+                    RoleId = allRoles.First(r => r.Name == "Member").Id
+                });
+
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
-                await _userManager.SetEmailAsync(user,Input.Email);
+                await _userManager.SetEmailAsync(user, Input.Email);
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
