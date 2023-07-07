@@ -15,13 +15,15 @@ namespace SoftUni_CarRental.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly ICarCardService _carCardService;
+        private readonly ICommentService commentService;
 
         public HomeController(ILogger<HomeController> logger, UserManager<User> userManager,
-            SignInManager<User> signInManager, ICarCardService carCardService)
+            SignInManager<User> signInManager, ICarCardService carCardService, ICommentService commentService)
         {
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._carCardService = carCardService;
+            this.commentService = commentService;
         }
 
         public async Task<IActionResult> Index()
@@ -39,7 +41,8 @@ namespace SoftUni_CarRental.Controllers
             var homePageViewModel = new HomePageViewModel()
             {
                 AllCarCards = this._carCardService.GetAllCarCards(),
-                AllCarsForSearch = await this._carCardService.AllModels()
+                AllCarsForSearch = await this._carCardService.AllModels(),
+                AllComments = this.commentService.GetAllComments()
             };
             
             return View(homePageViewModel);
