@@ -38,6 +38,7 @@ namespace SoftUni_CarRental
             builder.Services.AddScoped<ITestimonialService, TestimonialService>();
             builder.Services.AddScoped<IIdentityUserRoleService, IdentityUserRoleService>();
             builder.Services.AddScoped<IIdentityRolesService, IdentityRolesService>();
+            builder.Services.AddScoped<IMessageService, MessageService>();
 
             builder.Services.AddRazorPages();
 
