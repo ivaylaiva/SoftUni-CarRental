@@ -1,6 +1,7 @@
 ﻿using SoftUni_CarRental.Database;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
+using SoftUni_CarRental.ViewModels.Comment;
 using SoftUni_CarRental.ViewModels.Message;
 
 namespace SoftUni_CarRental.Services
@@ -22,8 +23,22 @@ namespace SoftUni_CarRental.Services
                 Description = model.Description,
                 CreatedOn = DateTime.Now,
             };
-            await this.dbContext.Messages.AddAsync(message);    
+            await this.dbContext.Messages.AddAsync(message);
             await this.dbContext.SaveChangesAsync();
+        }
+
+        public IEnumerable<MessageFormViewModel> GetAllMessages()
+        {
+            return this.dbContext
+               .Messages
+               .Select(c => new MessageFormViewModel()
+               {
+                   FirstName = c.FirstName,
+                   LastName = c.LastName,
+                   Description = c.Description,
+                   UserEmail = c.UserEmail,
+               })
+               .ToList();
         }
     }
 }
