@@ -23,5 +23,16 @@
             public const int MinDescriptionLengthForComment = 20;
             public const int MaxDescriptionLengthForComment = 1500;
         }
+        public static class Message
+        {
+            public const int MinFirstNameLength = 2;
+            public const int MaxFirstNameLength = 30;
+
+            public const int MinLastNameLength = 2;
+            public const int MaxLastNameLength = 30;
+
+            public const int MinDescriptionLength = 20;
+            public const int MaxDescriptionLength = 1500;
+        }
     }
 }
