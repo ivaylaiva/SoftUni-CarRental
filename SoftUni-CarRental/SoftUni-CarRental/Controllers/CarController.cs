@@ -84,7 +84,6 @@ namespace SoftUni_CarRental.Controllers
             {
                 return RedirectToAction("GetAllCars");
             }
-           
         }
         [HttpPost]
         public async Task<IActionResult> Edit(EditCarViewModel editmodel,int id)
@@ -115,7 +114,6 @@ namespace SoftUni_CarRental.Controllers
             catch (Exception)
             {
                 return this.RedirectToAction("GetAllCars");
-
             }
         }
         public async Task<IActionResult> Delete(int id)

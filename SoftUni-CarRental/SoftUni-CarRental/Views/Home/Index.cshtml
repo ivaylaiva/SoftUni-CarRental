@@ -123,49 +123,46 @@
             </div>
         </div>
 
+        <form asp-controller="Rent" asp-action="Index">
+            <div class="row">
+                @foreach (var car in Model.AllCarCards)
+                {
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="listing d-block  align-items-stretch">
+                            <div class="listing-img h-100 mr-4">
+                                <img src="@car.Car.ImageUrl" alt="Image" class="img-fluid">
+                            </div>
+                            <div class="listing-contents h-100">
+                                <h3>@car.Car.Model</h3>
+                                <div class="rent-price">
+                                    <strong>$@car.Car.PricePerDay</strong><span class="mx-1">/</span>day
+                                </div>
+                                <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+                                    <div class="listing-feature pr-4">
+                                        <span class="caption">Colour:</span>
+                                        <span class="text">@car.Car.Colour</span>
+                                    </div>
+                                    <div class="listing-feature pr-4">
+                                        <span class="caption">Doors:</span>
+                                        <span class="number">@car.Car.DoorsCount</span>
+                                    </div>
+                                    <div class="listing-feature pr-4">
+                                        <span class="caption">Passenger:</span>
+                                        <span class="number">@car.Car.PassengersCount</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>@car.Car.Description</p>
+                                    <a asp-controller="Rent" asp-action="Index"  asp-route-id="@car.CarId" class="btn btn-primary">@car.ButtonLabel</a>
+                                </div>
+                            </div>
 
-        <div class="row">
-            @foreach (var car in Model.AllCarCards)
-            {
-                <div class="col-md-6 col-lg-4 mb-4">
-
-                    <div class="listing d-block  align-items-stretch">
-                        <div class="listing-img h-100 mr-4">
-                            <img src="@car.Car.ImageUrl" alt="Image" class="img-fluid">
                         </div>
-                        <div class="listing-contents h-100">
-                            <h3>@car.Car.Model</h3>
-                            <div class="rent-price">
-                                <strong>$@car.Car.PricePerDay</strong><span class="mx-1">/</span>day
-                            </div>
-                            <div >
-                                <input asp-for="@car.CarId" class="form-control" aria-required="true" />
-                            </div>
-                            <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                                <div class="listing-feature pr-4">
-                                    <span class="caption">Colour:</span>
-                                    <span class="text">@car.Car.Colour</span>
-                                </div>
-                                <div class="listing-feature pr-4">
-                                    <span class="caption">Doors:</span>
-                                    <span class="number">@car.Car.DoorsCount</span>
-                                </div>
-                                <div class="listing-feature pr-4">
-                                    <span class="caption">Passenger:</span>
-                                    <span class="number">@car.Car.PassengersCount</span>
-                                </div>
-                            </div>
-                            <div>
-                                <p>@car.Car.Description</p>
-                                <p><a href="#" class="btn btn-primary btn-sm">@car.ButtonLabel</a></p>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
-            }
+                }
 
-        </div>
+            </div>
+        </form>
     </div>
 </div>
 
@@ -281,7 +278,7 @@
                     </div>
                 </div>
             }
-            
+
         </div>
     </div>
 </div>

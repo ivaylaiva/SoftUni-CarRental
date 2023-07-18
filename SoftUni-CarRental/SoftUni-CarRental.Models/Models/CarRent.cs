@@ -5,6 +5,7 @@ namespace SoftUni_CarRental.Models.Models
 {
     public class CarRent : EntityAbstraction
     {
+        //This is the history of rented cars.This class kave collection in the car model.
         [ForeignKey(nameof(User))]
         public string UserId { get; set; }
         public User User { get; set; } = null!;
