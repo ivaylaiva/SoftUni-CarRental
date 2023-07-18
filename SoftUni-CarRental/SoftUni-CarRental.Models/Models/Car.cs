@@ -7,6 +7,10 @@ namespace SoftUni_CarRental.Models.Models
 {
     public class Car : EntityAbstraction
     {
+        public Car()
+        {
+            this.RentedCars = new HashSet<CarRent>();
+        }
         [Required]
         [MaxLength(MaxModelLength)]
         public string Model { get; set; } = null!;
@@ -30,5 +34,8 @@ namespace SoftUni_CarRental.Models.Models
         [Required]
         public string ImageUrl { get; set; } = null!;
 
+        public bool IsAvailable { get; set; }
+
+        public IEnumerable<CarRent> RentedCars { get; set; } = null!;
     }
 }
