@@ -54,7 +54,7 @@
                             </div>
                             <div>
                                 <p>@card.Car.Description</p>
-                                <p><a href="#" class="btn btn-primary btn-sm">@card.ButtonLabel</a></p>
+                                <a asp-controller="Rent" asp-action="Index" asp-route-id="@card.CarId" class="btn btn-primary">@card.ButtonLabel</a>
                             </div>
                         </div>
 

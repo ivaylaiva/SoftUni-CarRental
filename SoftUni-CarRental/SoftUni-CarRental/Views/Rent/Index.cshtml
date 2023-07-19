@@ -1,55 +1,75 @@
 ﻿@using SoftUni_CarRental.ViewModels.CarCard;
 @model CarCardFormViewModel
 
+<div class="text-center row new-center-allCars">
+    <div class="card col-4" style="width: 20rem; ">
+        <img class="card-img-top" style="width: 18rem;"
+             src="@Model.Car.ImageUrl" alt="Car Image">
 
-<div class="hero inner-page" style="background-image: url('images/hero_1_a.jpg');">
-    <div class="container my-5 py-5 text-dark">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-6">
-                <div class="card">
-                    <div class="card-body p-4">
-                        <div class="d-flex flex-start w-100">
-                            <img class="rounded-circle shadow-1-strong me-3"
-                                 src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="65"
-                                 height="65" />
-                            <div class="w-100">
-                                <h5>Add a comment</h5>
-                                <form asp-controller="Comment" asp-action="Create" method="post">
-                                    <div class="listing-img h-100 mr-4">
-                                        <img src="@Model.Car.ImageUrl" alt="Image" class="img-fluid">
-                                    </div>
-                                    <div class="listing-contents h-100">
-                                        <h3>@Model.Car.Model</h3>
-                                        <div class="rent-price">
-                                            <strong>$@Model.Car.PricePerDay</strong><span class="mx-1">/</span>day
-                                        </div>
-                                        <div class="d-block d-md-flex mb-3 border-bottom pb-3">
-                                            <div class="listing-feature pr-4">
-                                                <span class="caption">Colour:</span>
-                                                <span class="text">@Model.Car.Colour</span>
-                                            </div>
-                                            <div class="listing-feature pr-4">
-                                                <span class="caption">Doors:</span>
-                                                <span class="number">@Model.Car.DoorsCount</span>
-                                            </div>
-                                            <div class="listing-feature pr-4">
-                                                <span class="caption">Passenger:</span>
-                                                <span class="number">@Model.Car.PassengersCount</span>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <p>@Model.Car.Description</p>
-                                            <a asp-controller="Rent" asp-action="Index" asp-route-id="@Model.CarId" class="btn btn-primary">@Model.ButtonLabel</a>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="card-body">
+            <h5 class="card-title mt-1">@Model.Car.Model</h5>
+            <p class="mb-0">Colour: @Model.Car.Colour</p>
+            <p class="mb-0">Door count: @Model.Car.DoorsCount</p>
+            <p class="mb-0">Passenger count: @Model.Car.PassengersCount</p>
+            <p class="mb-0">Price Per Day: @Model.Car.PricePerDay</p>
+            <p class="mb-0">Description: @Model.Car.Description</p>
         </div>
+        <p>If you want to rent the selected car,you have to confirm with pressing the button Rent</p>
+        <a asp-controller="Rent" asp-action="RentNow" asp-route-id="@Model.CarId" class="btn btn-primary">@Model.ButtonLabel</a>
+        @*<form class="input-group-sm" asp-controller="Book" asp-action="AddToCollection" asp-route-id="@car.Id">
+        <input type="submit" value="Add to Collection" class="fs-6 btn btn-success mb-3 p-2" />
+        </form>*@
     </div>
 </div>
+
+@*<div*@ @*class="hero inner-page" style="background-image: url('images/hero_1_a.jpg');">
+     <div class="container my-5 py-5 text-dark">
+     <div class="row d-flex justify-content-center">
+     <div class="col-md-10 col-lg-8 col-xl-6">
+     <div class="card">
+     <div class="card-body p-4">
+     <div class="d-flex flex-start w-100">
+     <img class="rounded-circle shadow-1-strong me-3"
+     src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="65"
+     height="65" />
+     <div class="w-100">
+     <h5>Add a comment</h5>
+     <form asp-controller="Comment" asp-action="Create" method="post">
+     <div class="listing-img h-100 mr-4">
+     <img src="@Model.Car.ImageUrl" alt="Image" class="img-fluid">
+     </div>
+     <div class="listing-contents h-100">
+     <h3>@Model.Car.Model</h3>
+     <div class="rent-price">
+     <strong>$@Model.Car.PricePerDay</strong><span class="mx-1">/</span>day
+     </div>
+     <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+     <div class="listing-feature pr-4">
+     <span class="caption">Colour:</span>
+     <span class="text">@Model.Car.Colour</span>
+     </div>
+     <div class="listing-feature pr-4">
+     <span class="caption">Doors:</span>
+     <span class="number">@Model.Car.DoorsCount</span>
+     </div>
+     <div class="listing-feature pr-4">
+     <span class="caption">Passenger:</span>
+     <span class="number">@Model.Car.PassengersCount</span>
+     </div>
+     </div>
+     <div>
+     <p>@Model.Car.Description</p>
+     <a asp-controller="Rent" asp-action="Index" asp-route-id="@Model.CarId" class="btn btn-primary">@Model.ButtonLabel</a>
+     </div>
+     </div>
+     </form>
+     </div>
+     </div>
+     </div>
+     </div>
+     </div>
+     </div>
+     </div>
+     </div>*@
 
 

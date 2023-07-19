@@ -1,0 +1,23 @@
+﻿@using SoftUni_CarRental.ViewModels.Rent;
+@model AllUserCarsViewModel
+
+<div class="row">
+    @foreach (var comment in Model.AllCarCards)
+    {
+        <div class="text-center row new-center-allCars">
+            <div class="card col-4" style="width: 20rem; ">
+                <img class="card-img-top" style="width: 18rem;"
+                     src="@comment.Car.ImageUrl" alt="Car Image">
+
+                <div class="card-body">
+                    <h5 class="card-title mt-1">@comment.Car.Model</h5>
+                    <p class="mb-0">Colour: @comment.Car.Colour</p>
+                    <p class="mb-0">Door count: @comment.Car.DoorsCount</p>
+                    <p class="mb-0">Passenger count: @comment.Car.PassengersCount</p>
+                    <p class="mb-0">Price Per Day: @comment.Car.PricePerDay</p>
+                    <p class="mb-0">Description: @comment.Car.Description</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

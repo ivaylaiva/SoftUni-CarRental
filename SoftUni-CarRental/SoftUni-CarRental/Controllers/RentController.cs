@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels.CarCard;
+using SoftUni_CarRental.ViewModels.Rent;
 
 namespace SoftUni_CarRental.Controllers
 {
@@ -18,8 +19,19 @@ namespace SoftUni_CarRental.Controllers
             this._signInManager = signInManager;
             this.rentService = rentService;
         }
+     
+        public async Task<IActionResult> MyRentedCars()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var allUserCarCards = new AllUserCarsViewModel
+            {
+                AllCarCards = this.rentService.GetAllCarCardForUser(user)
+            };
 
-        
+            return View("RentNow",allUserCarCards);
+        }
+
+  
         public async Task<IActionResult> Index(int id)
         {
             //var user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -36,5 +48,27 @@ namespace SoftUni_CarRental.Controllers
 
             return View(model);
         }
+        public async Task<IActionResult> RentNow(int id)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            await this.rentService.AddUserCarToCollection(user, id);
+
+            var allUserCarCards = new AllUserCarsViewModel
+            {
+                AllCarCards = this.rentService.GetAllCarCardForUser(user)
+            };
+
+            return View(allUserCarCards);
+        }
+
     }
 }
+
+
+
+

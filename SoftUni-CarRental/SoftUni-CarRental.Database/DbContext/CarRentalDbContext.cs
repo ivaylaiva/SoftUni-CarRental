@@ -16,6 +16,8 @@ namespace SoftUni_CarRental.Database
         public DbSet<CarCard> CarCards { get; set; } = null!;
         public DbSet<Comment> Comments { get; set; } = null!;
         public DbSet<Message> Messages { get; set; } = null!;
+        public DbSet<CarRent> CarRents { get; set; } = null!;
+        public DbSet<UserRentCar> UserRentCars { get; set; } = null!;
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

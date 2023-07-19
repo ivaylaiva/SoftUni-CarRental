@@ -5,49 +5,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SoftUni_CarRental.Database.Migrations
 {
-    public partial class UpdateCarModel : Migration
+    public partial class ChangingName : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "AspNetUserRoles",
-                keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "b41b30d7-71f7-4f7d-89e7-db86dcc8ae5a", "4628d02f-38f6-47be-a333-e6b730dd7766" });
-
-            migrationBuilder.DeleteData(
-                table: "AspNetUserRoles",
-                keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "54f533be-0e09-4055-84f3-d05af1e60fb8", "6bdbaf98-f724-4cb0-90ca-ccb90b3f2859" });
-
-            migrationBuilder.DeleteData(
-                table: "AspNetRoles",
-                keyColumn: "Id",
-                keyValue: "54f533be-0e09-4055-84f3-d05af1e60fb8");
-
-            migrationBuilder.DeleteData(
-                table: "AspNetRoles",
-                keyColumn: "Id",
-                keyValue: "b41b30d7-71f7-4f7d-89e7-db86dcc8ae5a");
-
-            migrationBuilder.DeleteData(
-                table: "AspNetUsers",
-                keyColumn: "Id",
-                keyValue: "4628d02f-38f6-47be-a333-e6b730dd7766");
-
-            migrationBuilder.DeleteData(
-                table: "AspNetUsers",
-                keyColumn: "Id",
-                keyValue: "6bdbaf98-f724-4cb0-90ca-ccb90b3f2859");
-
-            migrationBuilder.AddColumn<bool>(
-                name: "IsAvailable",
-                table: "Cars",
-                type: "bit",
-                nullable: false,
-                defaultValue: false);
-
             migrationBuilder.CreateTable(
-                name: "CarRent",
+                name: "CarRents",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -60,93 +23,66 @@ namespace SoftUni_CarRental.Database.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CarRent", x => x.Id);
+                    table.PrimaryKey("PK_CarRents", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CarRent_AspNetUsers_UserId",
+                        name: "FK_CarRents_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CarRent_Cars_CarId",
+                        name: "FK_CarRents_Cars_CarId",
                         column: x => x.CarId,
                         principalTable: "Cars",
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.InsertData(
-                table: "AspNetRoles",
-                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[,]
-                {
-                    { "1db5977f-363f-4e9a-a853-e5680bfe886c", "5d696e00-0c7b-4ee7-adcc-f050fde63278", "Admin", "ADMIN" },
-                    { "3429413a-b0e3-4fb8-86b3-39f1d34bf9cf", "b20b16bc-b8b7-44d4-bf4a-373944859ec3", "Member", "MEMBER" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[,]
-                {
-                    { "4e238791-2a8b-49e2-a65e-81680df01962", 0, "6c4fffa1-ab85-4bc9-bb6f-48b3bb5959f0", "admin@carrental.com", false, false, null, "ADMIN@CARRENTAL.COM", "ADMIN@CARRENTAL.COM", "AQAAAAEAACcQAAAAEOuJL17/QLekSuKOt5mAHQQkIAs9Hx/Tw/Ri7fLkVxV5beVhFf/b94bHR/xr/Kg4Bw==", null, false, "14df39fc-e280-4138-b474-3aa79366f21c", false, "admin@carrental.com" },
-                    { "9d254ae8-115e-480f-8efe-7798dae95863", 0, "08c6c53c-a6c1-4f6c-bad4-21c2c5a1e69c", "member@carrental.com", false, false, null, "MEMBER@CARRENTAL.COM", "MEMBER@CARRENTAL.COM", "AQAAAAEAACcQAAAAEKAwn7QfDcmE+THCysFFE7G4pvOeCC+L/x5IyDHDM5YqEWNXhn+sxfqc663OOfym2w==", null, false, "87cb0773-cc54-4a45-a9e5-5ec0babe390d", false, "member@carrental.com" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "1db5977f-363f-4e9a-a853-e5680bfe886c", "4e238791-2a8b-49e2-a65e-81680df01962" });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "3429413a-b0e3-4fb8-86b3-39f1d34bf9cf", "9d254ae8-115e-480f-8efe-7798dae95863" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CarRent_CarId",
-                table: "CarRent",
+                name: "IX_CarRents_CarId",
+                table: "CarRents",
                 column: "CarId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CarRent_UserId",
-                table: "CarRent",
+                name: "IX_CarRents_UserId",
+                table: "CarRents",
                 column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "CarRent");
+                name: "CarRents");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "1db5977f-363f-4e9a-a853-e5680bfe886c", "4e238791-2a8b-49e2-a65e-81680df01962" });
+                keyValues: new object[] { "da7573f8-c0f9-49d5-8757-928105f93f3a", "1b46cfbe-462d-4648-a979-063a7895e264" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "3429413a-b0e3-4fb8-86b3-39f1d34bf9cf", "9d254ae8-115e-480f-8efe-7798dae95863" });
+                keyValues: new object[] { "04d20f5a-b63f-4e86-9dc3-8f2766e08d41", "ac4b6015-b506-41b1-92e3-9a2dc51c20eb" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "1db5977f-363f-4e9a-a853-e5680bfe886c");
+                keyValue: "04d20f5a-b63f-4e86-9dc3-8f2766e08d41");
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "3429413a-b0e3-4fb8-86b3-39f1d34bf9cf");
+                keyValue: "da7573f8-c0f9-49d5-8757-928105f93f3a");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "4e238791-2a8b-49e2-a65e-81680df01962");
+                keyValue: "1b46cfbe-462d-4648-a979-063a7895e264");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "9d254ae8-115e-480f-8efe-7798dae95863");
+                keyValue: "ac4b6015-b506-41b1-92e3-9a2dc51c20eb");
 
             migrationBuilder.DropColumn(
                 name: "IsAvailable",

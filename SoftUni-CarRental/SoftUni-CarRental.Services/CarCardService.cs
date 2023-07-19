@@ -2,9 +2,7 @@
 using SoftUni_CarRental.Database;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
-using SoftUni_CarRental.ViewModels.Car.FormModel;
 using SoftUni_CarRental.ViewModels.CarCard;
-using System.Linq;
 
 namespace SoftUni_CarRental.Services
 {
@@ -39,6 +37,7 @@ namespace SoftUni_CarRental.Services
         {
             return this.dbContext
                  .CarCards
+                 .Where(x=>x.Car.IsAvailable == true)
                  .Select(c => new AllCarCardViewModel()
                  {
                      ButtonLabel = c.ButtonLabel,

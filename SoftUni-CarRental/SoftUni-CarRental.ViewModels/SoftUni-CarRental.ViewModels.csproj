@@ -11,8 +11,4 @@
     <ProjectReference Include="..\SoftUni-CarRental.Models\SoftUni-CarRental.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Rent\" />
-  </ItemGroup>
-
 </Project>
