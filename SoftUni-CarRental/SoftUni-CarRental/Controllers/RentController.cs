@@ -19,7 +19,7 @@ namespace SoftUni_CarRental.Controllers
             this._signInManager = signInManager;
             this.rentService = rentService;
         }
-     
+
         public async Task<IActionResult> MyRentedCars()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -28,10 +28,10 @@ namespace SoftUni_CarRental.Controllers
                 AllCarCards = this.rentService.GetAllCarCardForUser(user)
             };
 
-            return View("RentNow",allUserCarCards);
+            return View("RentNow", allUserCarCards);
         }
 
-  
+
         public async Task<IActionResult> Index(int id)
         {
             //var user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -65,7 +65,24 @@ namespace SoftUni_CarRental.Controllers
 
             return View(allUserCarCards);
         }
+        public async Task<IActionResult> ReleaseNow(int id)
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            await this.rentService.RemoveFromUserCollection(user, id);
+
+            var allUserCarCards = new AllUserCarsViewModel
+            {
+                AllCarCards = this.rentService.GetAllCarCardForUser(user)
+            };
+
+            return View("RentNow", allUserCarCards);
+        }
     }
 }
 

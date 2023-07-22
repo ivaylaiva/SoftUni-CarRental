@@ -33,7 +33,7 @@ namespace SoftUni_CarRental.Services
             UserRentCar userCarRent = new UserRentCar()
             {
                 RentedOn = DateTime.Now,
-                IsDeleted = true,
+                IsDeleted = false,
                 User = user,
                 UserId = user.Id,
                 CarCardId = id,
@@ -53,7 +53,25 @@ namespace SoftUni_CarRental.Services
             await this.dbContext.CarRents.AddAsync(carRent);
             await dbContext.SaveChangesAsync();
         }
+        public async Task RemoveFromUserCollection(User user, int id)
+        {
+            Car car = await this.dbContext
+               .Cars
+               .FindAsync(id);
 
+            CarCard carCard = await this.dbContext
+                 .CarCards
+                 .FirstAsync(x => x.Car.Id == car.Id);
+
+            UserRentCar userRentCar = await this.dbContext
+                 .UserRentCars
+                 .FirstAsync(x=>x.CarCardId == carCard.Id);
+
+            car.IsAvailable = true;
+
+            this.dbContext.UserRentCars.Remove(userRentCar);
+            await this.dbContext.SaveChangesAsync();
+        }
         public IEnumerable<AllCarCardViewModel> GetAllCarCardForUser(User user)
         {
             return this.dbContext
@@ -86,5 +104,7 @@ namespace SoftUni_CarRental.Services
 
             return model;
         }
+
+       
     }
 }

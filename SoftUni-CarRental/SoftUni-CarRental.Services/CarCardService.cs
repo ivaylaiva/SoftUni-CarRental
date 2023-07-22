@@ -37,7 +37,7 @@ namespace SoftUni_CarRental.Services
         {
             return this.dbContext
                  .CarCards
-                 .Where(x=>x.Car.IsAvailable == true)
+                 .Where(x=>x.Car.IsAvailable == true && x.Car.IsDeleted == false)
                  .Select(c => new AllCarCardViewModel()
                  {
                      ButtonLabel = c.ButtonLabel,

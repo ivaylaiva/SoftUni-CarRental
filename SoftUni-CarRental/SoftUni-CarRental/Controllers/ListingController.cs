@@ -1,6 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SoftUni_CarRental.Models.Home.ViewModels;
-using SoftUni_CarRental.Services;
 using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels.Listing;
 

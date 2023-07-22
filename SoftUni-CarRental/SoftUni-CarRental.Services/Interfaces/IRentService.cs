@@ -10,5 +10,6 @@ namespace SoftUni_CarRental.Services.Interfaces
         Task<CarCardFormViewModel> GetForDetailsById(int carCardId);
         Task AddUserCarToCollection(User user,int id);
         IEnumerable<AllCarCardViewModel> GetAllCarCardForUser(User user);
+        Task RemoveFromUserCollection(User user, int id);
     }
 }
