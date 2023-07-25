@@ -1,14 +1,19 @@
-﻿using SoftUni_CarRental.Database;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using SoftUni_CarRental.Database;
 
 namespace SoftUni_CarRental.Tests
 {
     public static class ContextGenerator
     {
-          public static CarRentalDbContext
+        public static CarRentalDbContext Instance
+        {
+            get
+            {
+                var options = new DbContextOptionsBuilder<CarRentalDbContext>()
+                    .UseInMemoryDatabase(Guid.NewGuid().ToString())
+                    .Options;
+                return new CarRentalDbContext(options);
+            }
+        }
     }
 }

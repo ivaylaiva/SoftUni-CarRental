@@ -12,11 +12,14 @@ namespace SoftUni_CarRental.Services
     {
         private readonly CarRentalDbContext dbContext;
         private readonly ICarCardService cardService;
+
+      
         public CarService(CarRentalDbContext dbContext, ICarCardService cardService)
         {
             this.dbContext = dbContext;
             this.cardService = cardService;
         }
+
         public async Task AddCarAsync(CarFormModel carModel)
         {
             Car car = new Car
@@ -29,6 +32,7 @@ namespace SoftUni_CarRental.Services
                 PassengersCount = carModel.PassengersCount,
                 ImageUrl = carModel.ImageUrl,
                 PricePerDay = carModel.PricePerDay,
+               
             };
             await this.dbContext.Cars.AddAsync(car);
             await this.dbContext.SaveChangesAsync();
@@ -123,5 +127,4 @@ namespace SoftUni_CarRental.Services
             await dbContext.SaveChangesAsync();
         }
     }
-    
 }
