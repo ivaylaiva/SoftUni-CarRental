@@ -1,7 +1,6 @@
 ﻿using SoftUni_CarRental.Database;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
-using SoftUni_CarRental.ViewModels.Comment;
 using SoftUni_CarRental.ViewModels.Message;
 
 namespace SoftUni_CarRental.Services

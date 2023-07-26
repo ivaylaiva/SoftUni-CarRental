@@ -3,9 +3,6 @@ using SoftUni_CarRental.Database;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels.CarCard;
-using SoftUni_CarRental.ViewModels.Comment;
-using SoftUni_CarRental.ViewModels.Rent;
-using static SoftUni_CarRental.Common.EntityValidations.EntityValidationConstants;
 using Car = SoftUni_CarRental.Models.Models.Car;
 using CarCard = SoftUni_CarRental.Models.Models.CarCard;
 

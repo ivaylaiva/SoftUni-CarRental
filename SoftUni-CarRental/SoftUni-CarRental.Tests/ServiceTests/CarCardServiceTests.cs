@@ -99,6 +99,8 @@ namespace SoftUni_CarRental.Tests.ServiceTests
                   CreatedOn = DateTime.Now,
                   IsDeleted = false
               });
+
+                
             }
             await db.SaveChangesAsync();
 
