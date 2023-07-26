@@ -1,12 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NUnit.Framework;
-using SoftUni_CarRental.Database;
-using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services;
 using SoftUni_CarRental.ViewModels;
 using SoftUni_CarRental.ViewModels.Car.FormModel;
-using Xunit;
-using static SoftUni_CarRental.Common.EntityValidations.EntityValidationConstants;
 
 namespace SoftUni_CarRental.Tests.ServiceTests
 {

@@ -33,7 +33,7 @@ namespace SoftUni_CarRental.Services
             await dbContext.SaveChangesAsync();
         }
 
-        public IEnumerable<AllCarCardViewModel> GetAllCarCards()
+        public  IEnumerable<AllCarCardViewModel> GetAllCarCards()
         {
             return this.dbContext
                  .CarCards
