@@ -5,7 +5,6 @@ using SoftUni_CarRental.Models.Home.ViewModels;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels;
-using SoftUni_CarRental.ViewModels.CarCard;
 using System.Diagnostics;
 
 namespace SoftUni_CarRental.Controllers
