@@ -20,6 +20,14 @@ namespace SoftUni_CarRental.Controllers
             };
             return View(testimonialsViewModel);
         }
+        public IActionResult Index_Admin()
+        {
+            var testimonialsViewModel = new TestimonialsPageViewModel()
+            {
+                AllComments = this.commentService.GetAllComments()
+            };
+            return View(testimonialsViewModel);
+        }
 
     }
 }

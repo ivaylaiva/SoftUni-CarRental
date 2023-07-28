@@ -20,6 +20,7 @@ namespace SoftUni_CarRental.Services
                 Description = model.Description,
                 UserEmail = model.UserEmail,
                 CreatedOn = DateTime.Now,
+                IsDeleted = false
             };
             await this.dbContext.Comments.AddAsync(comment);
             await this.dbContext.SaveChangesAsync();

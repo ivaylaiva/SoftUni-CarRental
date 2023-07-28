@@ -32,7 +32,8 @@ namespace SoftUni_CarRental.Services
                 PassengersCount = carModel.PassengersCount,
                 ImageUrl = carModel.ImageUrl,
                 PricePerDay = carModel.PricePerDay,
-               
+                IsAvailable = true,
+                IsDeleted = false,
             };
             await this.dbContext.Cars.AddAsync(car);
             await this.dbContext.SaveChangesAsync();

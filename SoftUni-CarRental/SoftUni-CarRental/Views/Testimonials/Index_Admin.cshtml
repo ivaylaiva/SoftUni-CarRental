@@ -1,5 +1,5 @@
-﻿@using SoftUni_CarRental.ViewModels.Message;
-@model AllMessagesViewModel
+﻿@using SoftUni_CarRental.ViewModels.Testimonials;
+@model TestimonialsPageViewModel
 
 <div class="site-wrap" id="home-section">
 
@@ -18,31 +18,39 @@
         <div class="container">
             <div class="row align-items-end ">
                 <div class="col-lg-5">
+
+                    <div class="intro">
+                        <h1><strong>Testimonials</strong></h1>
+                        <form asp-controller="Comment" asp-action="Index" class="trip-form">
+                            <input type="submit" value="Add Comment" class="btn btn-primary btn-block py-3">
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 
+
     <div class="site-section bg-light">
         <div class="container">
             <div class="row">
                 <div class="col-lg-7">
-                    <h2 class="section-heading"><strong>Messages</strong></h2>
+                    <h2 class="section-heading"><strong>Testimonials</strong></h2>
                 </div>
             </div>
             <div class="row">
-                @foreach (var message in Model.AllMessages)
+                @foreach (var comment in Model.AllComments)
                 {
                     <div class="col-lg-4 mb-4">
                         <div class="testimonial-2">
                             <blockquote class="mb-4">
-                                <p>@message.Description</p>
+                                <p>@comment.Description</p>
                             </blockquote>
                             <div class="d-flex v-card align-items-center">
                                 <div class="author-name">
-                                    <span class="d-block">@message.UserEmail</span>
-                                    <span class="d-block">@message.FirstName</span>
-                                    <span class="d-block">@message.LastName</span>
+                                    <span class="d-block">@comment.UserEmail</span>
+                                    <a asp-controller="Testimonials" asp-action="Delete" class="btn btn-primary">Delete</a>
                                 </div>
                             </div>
                         </div>
@@ -53,4 +61,16 @@
     </div>
 </div>
 
+<div class="site-section bg-primary py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-4 mb-md-0">
+                <h2 class="mb-0 text-white">What are you waiting for?</h2>
+            </div>
+            <div class="col-lg-5 text-md-right">
+                <a asp-controller="Listing" asp-action="Index" class="btn btn-primary">Rent Now</a>
+            </div>
+        </div>
+    </div>
+</div>
 
