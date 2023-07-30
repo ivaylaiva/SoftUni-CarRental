@@ -30,12 +30,20 @@ namespace SoftUni_CarRental.Services
         {
             return this.dbContext
                 .Comments
+                .Where(x => x.IsDeleted == false)
                 .Select(c => new AllCommentViewModel()
                 {
-                   Description= c.Description,
-                   UserEmail= c.UserEmail,
+                    Id = c.Id,
+                    Description = c.Description,
+                    UserEmail = c.UserEmail,
                 })
                 .ToList();
+        }
+        public async Task DeleteById(int id)
+        {
+            var comment = dbContext.Comments.Find(id);
+            comment.IsDeleted = true;
+            await dbContext.SaveChangesAsync();
         }
     }
 }

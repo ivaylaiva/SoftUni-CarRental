@@ -50,7 +50,7 @@
                             <div class="d-flex v-card align-items-center">
                                 <div class="author-name">
                                     <span class="d-block">@comment.UserEmail</span>
-                                    <a asp-controller="Testimonials" asp-action="Delete" class="btn btn-primary">Delete</a>
+                                    <a asp-controller="Testimonials" asp-action="Delete" asp-route-id="@comment.Id" class="btn btn-primary">Delete</a>
                                 </div>
                             </div>
                         </div>

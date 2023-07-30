@@ -7,5 +7,6 @@ namespace SoftUni_CarRental.Services.Interfaces
     {
         Task CreateCommentAsync(CreateCommentViewModel model);
         IEnumerable<AllCommentViewModel> GetAllComments();
+        Task DeleteById(int id);
     }
 }
