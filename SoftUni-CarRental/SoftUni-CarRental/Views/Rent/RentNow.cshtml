@@ -1,28 +1,50 @@
 ﻿@using SoftUni_CarRental.ViewModels.Rent;
 @model AllUserCarsViewModel
 
-<div class="row">
-    @foreach (var car in Model.AllCarCards)
-    {
-        <div class="text-center row new-center-allCars">
-            <div class="card col-4" style="width: 20rem; ">
-                <img class="card-img-top" style="width: 18rem;"
-                     src="@car.Car.ImageUrl" alt="Car Image">
-
-                <div class="card-body">
-                    <h5 class="card-title mt-1">@car.Car.Model</h5>
-                    <p class="mb-0">Colour: @car.Car.Colour</p>
-                    <p class="mb-0">Door count: @car.Car.DoorsCount</p>
-                    <p class="mb-0">Passenger count: @car.Car.PassengersCount</p>
-                    <p class="mb-0">Price Per Day: @car.Car.PricePerDay</p>
-                    <p class="mb-0">Description: @car.Car.Description</p>
-                </div>
-                <p>
-                    If you want to
-                    release the car,you have to confirm with pressing the button Release
-                </p>
-                <a asp-controller="Rent" asp-action="ReleaseNow" asp-route-id="@car.Car.Id" class="btn btn-primary">Release the car</a>
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h2 class="section-heading"><strong>Your Cars</strong></h2>
             </div>
         </div>
-    }
+        <div class="row">
+            @foreach (var car in Model.AllCarCards)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="listing d-block  align-items-stretch">
+                        <div class="listing-img h-100 mr-4">
+                            <img src="@car.Car.ImageUrl" alt="Image" class="img-fluid">
+                        </div>
+                        <div class="listing-contents h-100">
+                            <h3>@car.Car.Model</h3>
+                            <div class="rent-price">
+                                <strong>$@car.Car.PricePerDay</strong><span class="mx-1">/</span>day
+                            </div>
+                            <div class="d-block d-md-flex mb-3 border-bottom pb-3">
+                                <div class="listing-feature pr-4">
+                                    <span class="caption">Colour:</span>
+                                    <span class="text">@car.Car.Colour</span>
+                                </div>
+                                <div class="listing-feature pr-4">
+                                    <span class="caption">Doors:</span>
+                                    <span class="number">@car.Car.DoorsCount</span>
+                                </div>
+                                <div class="listing-feature pr-4">
+                                    <span class="caption">Passenger:</span>
+                                    <span class="number">@car.Car.PassengersCount</span>
+                                </div>
+                            </div>
+                            <div>
+                                <p>@car.Car.Description</p>
+                                <a asp-controller="Rent" asp-action="ReleaseNow" asp-route-id="@car.Car.Id" class="btn btn-primary">Release Now</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>
