@@ -34,15 +34,6 @@ namespace SoftUni_CarRental.Controllers
 
         public async Task<IActionResult> Index(int id)
         {
-            //var user = await _userManager.FindByNameAsync(User.Identity.Name);
-
-            //Това трябва да го оправим
-
-            //if (!_signInManager.IsSignedIn(User))
-            //{
-            //    return View("/Areas/Identity/Pages/Account/Login.cshtml");
-            //}
-
             CarCardFormViewModel model =
                     await this.rentService.GetForDetailsById(id);
 
