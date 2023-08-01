@@ -51,7 +51,7 @@ namespace SoftUni_CarRental.Services
         {
             return await this.dbContext
                 .CarCards
-                .Where(x => x.Car.Model == model && x.Car.IsDeleted == false)
+                .Where(x => x.Car.Model == model && x.Car.IsDeleted == false && x.Car.IsAvailable == true)
                 .Select(x => new AllCarCardViewModel()
                 {
                     ButtonLabel = x.ButtonLabel,
@@ -64,7 +64,7 @@ namespace SoftUni_CarRental.Services
         {
             return await this.dbContext
                 .CarCards
-                .Where(x => x.Car.IsDeleted == false)
+                .Where(x => x.Car.IsDeleted == false && x.Car.IsAvailable == true)
                 .Select(x => new AllCarCardViewModel()
                 {
                     ButtonLabel = x.ButtonLabel,

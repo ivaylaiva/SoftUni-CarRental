@@ -1,15 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SoftUni_CarRental.Models.Home.ViewModels;
 using SoftUni_CarRental.Services.Interfaces;
+using SoftUni_CarRental.ViewModels;
 using SoftUni_CarRental.ViewModels.Listing;
+using System.Diagnostics;
 
 namespace SoftUni_CarRental.Controllers
 {
     public class ListingController : Controller
     {
         private readonly ICarCardService _cardService;
-        public ListingController(ICarCardService _cardService)
+        private readonly ICommentService _commentService;
+        public ListingController(ICarCardService _cardService, ICommentService commentService)
         {
             this._cardService = _cardService;
+            _commentService = commentService;
         }
         [HttpGet]
         public IActionResult Index()
@@ -23,11 +28,17 @@ namespace SoftUni_CarRental.Controllers
         [HttpPost]
         public async Task<IActionResult> Search(string model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || model == null)
             {
-                return View("~/Views/Listing/Index.cshtml");
+                //var homePageViewModel = new HomePageViewModel()
+                //{
+                //    AllCarCards = this._cardService.GetAllCarCards(),
+                //    AllCarsForSearch = await this._cardService.AllModels(),
+                //    AllComments = this._commentService.GetAllComments()
+                //};
+                return RedirectToAction("Home","Error",401);
             }
-
+            
             var listingpageViewModel = new ListingPageViewModel()
             {
                 AllCarCardsForListing = await this._cardService.SearchForCar(model)

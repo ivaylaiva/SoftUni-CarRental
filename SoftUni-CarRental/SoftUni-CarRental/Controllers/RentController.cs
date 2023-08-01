@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
@@ -19,7 +20,7 @@ namespace SoftUni_CarRental.Controllers
             this._signInManager = signInManager;
             this.rentService = rentService;
         }
-
+        [Authorize]
         public async Task<IActionResult> MyRentedCars()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -39,6 +40,7 @@ namespace SoftUni_CarRental.Controllers
 
             return View(model);
         }
+        [Authorize]
         public async Task<IActionResult> RentNow(int id)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
@@ -56,6 +58,7 @@ namespace SoftUni_CarRental.Controllers
 
             return View(allUserCarCards);
         }
+        [Authorize]
         public async Task<IActionResult> ReleaseNow(int id)
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);

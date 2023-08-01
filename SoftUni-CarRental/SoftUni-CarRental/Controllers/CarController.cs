@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SoftUni_CarRental.Models.Models;
 using SoftUni_CarRental.Services.Interfaces;
@@ -7,7 +8,7 @@ using SoftUni_CarRental.ViewModels.Car.FormModel;
 
 namespace SoftUni_CarRental.Controllers
 {
-
+    [Authorize(Roles = "Admin")]
     public class CarController:Controller
     {
         private readonly UserManager<User> _userManager;
