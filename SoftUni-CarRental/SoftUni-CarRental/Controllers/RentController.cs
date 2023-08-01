@@ -38,10 +38,10 @@ namespace SoftUni_CarRental.Controllers
 
             //Това трябва да го оправим
 
-            if (!_signInManager.IsSignedIn(User))
-            {
-                return View("~/Areas/Identity/Pages/Account/Login.cshtml");
-            }
+            //if (!_signInManager.IsSignedIn(User))
+            //{
+            //    return View("/Areas/Identity/Pages/Account/Login.cshtml");
+            //}
 
             CarCardFormViewModel model =
                     await this.rentService.GetForDetailsById(id);
