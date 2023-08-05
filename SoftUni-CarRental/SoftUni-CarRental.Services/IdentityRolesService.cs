@@ -19,11 +19,12 @@ namespace SoftUni_CarRental.Services
 
         public void CreateMemberUser(User user, List<Role> allRoles, List<IdentityUserRole<string>> userRoles)
         {
-            this.dbContext.UserRoles.Add(new IdentityUserRole<string>
+            var newUser = new IdentityUserRole<string>
             {
                 UserId = user.Id,
                 RoleId = allRoles.First(r => r.Name == "Member").Id
-            });
+            };
+            this.dbContext.UserRoles.Add(newUser);
             this.dbContext.SaveChanges();
         }
     }

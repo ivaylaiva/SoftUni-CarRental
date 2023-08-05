@@ -54,8 +54,8 @@ namespace SoftUni_CarRental
             //Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                //app.UseMigrationsEndPoint();
-                //app.UseDeveloperExceptionPage();
+                app.UseMigrationsEndPoint();
+                app.UseDeveloperExceptionPage();
                 app.UseExceptionHandler("/Home/Error/500");
                 app.UseStatusCodePagesWithRedirects("/Home/Error?statusCode={0}");
 
