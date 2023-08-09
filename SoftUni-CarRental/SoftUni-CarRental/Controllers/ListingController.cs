@@ -10,11 +10,9 @@ namespace SoftUni_CarRental.Controllers
     public class ListingController : Controller
     {
         private readonly ICarCardService _cardService;
-        private readonly ICommentService _commentService;
-        public ListingController(ICarCardService _cardService, ICommentService commentService)
+        public ListingController(ICarCardService _cardService)
         {
             this._cardService = _cardService;
-            _commentService = commentService;
         }
         [HttpGet]
         public IActionResult Index()

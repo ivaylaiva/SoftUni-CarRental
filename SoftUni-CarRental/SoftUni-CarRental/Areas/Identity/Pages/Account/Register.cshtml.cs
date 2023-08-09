@@ -104,8 +104,10 @@ namespace TaskBoardApp.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                //This method return all the users with their roles
                 var allUserRoles = this._identityUserRole.AllRoles().ToList();
 
+                //This method return roles member and admin
                 var allRoles = this._identityRolesService.AllRoles().ToList();
 
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
@@ -113,7 +115,9 @@ namespace TaskBoardApp.Areas.Identity.Pages.Account
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
+                //This method set the role member to the user who is trying to register
                 this._identityRolesService.CreateMemberUser(user, allRoles, allUserRoles);
+
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);

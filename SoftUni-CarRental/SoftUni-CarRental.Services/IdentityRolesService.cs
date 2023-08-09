@@ -14,6 +14,7 @@ namespace SoftUni_CarRental.Services
         }
         public IEnumerable<Role> AllRoles()
         {
+            //This method return roles member and admin
             return this.dbContext.Roles;
         }
 

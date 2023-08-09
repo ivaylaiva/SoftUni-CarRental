@@ -13,6 +13,7 @@ namespace SoftUni_CarRental.Services
         }
         public IEnumerable<IdentityUserRole<string>> AllRoles()
         {
+            //This method return all the users with their roles
             return this.dbContext.UserRoles;
         }
     }

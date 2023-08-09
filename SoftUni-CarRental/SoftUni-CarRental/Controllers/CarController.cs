@@ -11,17 +11,11 @@ namespace SoftUni_CarRental.Controllers
     [Authorize(Roles = "Admin")]
     public class CarController:Controller
     {
-        private readonly UserManager<User> _userManager;
-        private readonly ILogger<CarController> _logger;
-        private readonly SignInManager<User> _signInManager;
         private readonly ICarService carService;
 
-        public CarController(ILogger<CarController> logger, UserManager<User> userManager,
-            SignInManager<User> signInManager, ICarService carService)
+        public CarController(ICarService carService)
         {
-            this._logger = logger;
-            this._userManager = userManager;
-            this._signInManager = signInManager;
+            
             this.carService = carService;
         }
         [HttpGet]
