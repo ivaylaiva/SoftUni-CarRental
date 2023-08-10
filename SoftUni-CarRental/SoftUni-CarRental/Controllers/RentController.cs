@@ -11,13 +11,11 @@ namespace SoftUni_CarRental.Controllers
     public class RentController : Controller
     {
         private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
         private readonly IRentService rentService;
-        public RentController(UserManager<User> userManager, SignInManager<User> signInManager
+        public RentController(UserManager<User> userManager
             , IRentService rentService)
         {
             this._userManager = userManager;
-            this._signInManager = signInManager;
             this.rentService = rentService;
         }
         [Authorize]
