@@ -32,31 +32,6 @@ namespace SoftUni_CarRental.Controllers
            await this.carService.AddCarAsync(carModel);
            return RedirectToAction("GetAllCars");
 
-            //var random = new Random();
-            //var photoName = random.Next();
-
-            //var extension = updateExistingUserInformatio.Photo.FileName.Split(".").Last();
-            //var fileName = $"{photoName}.{extension}";
-            //var destPath = Path.Combine(_environment.WebRootPath, "images", fileName);
-
-            //using (var fileStream = new FileStream(destPath, FileMode.Create))
-            //{
-            //    updateExistingUserInformatio.Photo.CopyTo(fileStream);
-            //}
-
-            //var memoryStream = new MemoryStream();
-            //updateExistingUserInformatio.Photo.OpenReadStream().CopyTo(memoryStream);
-            //byte[] photoAsBytes = memoryStream.ToArray();
-
-            //var photoDTO = _mapper.Map<PhotoDTO>(updateExistingUserInformatio);
-            //photoDTO.PhotoAsNumber = photoName;
-            //photoDTO.Type = fileName;
-
-            //photoDTO.PhotoAsBytes = photoAsBytes;
-            //photoDTO.PhotoDescription = updateExistingUserInformatio.PhotoDescription;
-
-            //userDTO.ProfilePhoto = fileName;
-            //await _photoService.UploadPhotoAsync(0, int.Parse(_userManager.GetUserId(User)), photoDTO);
 
         }
         public async Task<IActionResult> GetAllCars()
