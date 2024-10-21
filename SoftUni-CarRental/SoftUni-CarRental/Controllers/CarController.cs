@@ -13,7 +13,6 @@ namespace SoftUni_CarRental.Controllers
 
         public CarController(ICarService carService)
         {
-            
             this.carService = carService;
         }
         [HttpGet]

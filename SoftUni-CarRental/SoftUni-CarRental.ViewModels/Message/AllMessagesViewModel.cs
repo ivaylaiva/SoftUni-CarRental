@@ -4,6 +4,10 @@ namespace SoftUni_CarRental.ViewModels.Message
 {
     public class AllMessagesViewModel
     {
-        public IEnumerable<MessageFormViewModel> AllMessages { get; set; }
+        public int Id { get; set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
+        public string UserEmail { get; set; } = null!;
+        public string Description { get; set; } = null!;
     }
 }

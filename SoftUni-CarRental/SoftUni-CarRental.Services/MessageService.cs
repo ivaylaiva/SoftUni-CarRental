@@ -16,6 +16,7 @@ namespace SoftUni_CarRental.Services
         {
             Message message = new Message()
             {
+               
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 UserEmail = model.UserEmail,
@@ -26,12 +27,13 @@ namespace SoftUni_CarRental.Services
             await this.dbContext.SaveChangesAsync();
         }
 
-        public IEnumerable<MessageFormViewModel> GetAllMessages()
+        public async Task<IEnumerable<AllMessagesViewModel>> GetAllMessages()
         {
             return this.dbContext
                .Messages
-               .Select(c => new MessageFormViewModel()
+               .Select(c => new AllMessagesViewModel()
                {
+                   Id=c.Id,
                    FirstName = c.FirstName,
                    LastName = c.LastName,
                    Description = c.Description,

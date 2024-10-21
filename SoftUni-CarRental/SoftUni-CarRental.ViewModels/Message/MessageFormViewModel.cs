@@ -5,6 +5,7 @@ namespace SoftUni_CarRental.ViewModels.Message
 {
     public class MessageFormViewModel
     {
+
         [Required]
         [StringLength(MaxFirstNameLength,MinimumLength =MinFirstNameLength,ErrorMessage = "The first name must be between 2 and 30 characters long!")]
         public string FirstName { get; set; } = null!;

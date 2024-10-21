@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SoftUni_CarRental.Services;
 using SoftUni_CarRental.Services.Interfaces;
 using SoftUni_CarRental.ViewModels.Message;
 using SoftUni_CarRental.ViewModels.Testimonials;
@@ -28,17 +29,16 @@ namespace SoftUni_CarRental.Controllers
         }
         public async Task<IActionResult> AllMessages()
         {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+            
+            var model = await messageService.GetAllMessages();
+            return View(model);
 
-            var messagesPageViewModel = new AllMessagesViewModel()
-            {
-               AllMessages = this.messageService.GetAllMessages()
-            };
+            //var messagesPageViewModel = new AllMessagesViewModel()
+            //{
+            //    AllMessages = await messageService.GetAllMessages()
+            //};
 
-            return View("~/Views/Contact/AllMessages.cshtml", messagesPageViewModel);
+            //return View("~/Views/Contact/AllMessages.cshtml", messagesPageViewModel);
         }
     }
 

@@ -1,5 +1,5 @@
 ﻿@using SoftUni_CarRental.ViewModels.Message;
-@model AllMessagesViewModel
+@model IEnumerable<AllMessagesViewModel>
 
 <div class="site-wrap" id="home-section">
 
@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach (var message in Model.AllMessages)
+                @foreach (var message in Model)
                 {
                     <div class="col-lg-4 mb-4">
                         <div class="testimonial-2">
@@ -45,7 +45,15 @@
                                     <span class="d-block">@message.LastName</span>
                                 </div>
                             </div>
+                            <tr class="actions">
+                                <th><span class="fw-bold">Actions:</span></th>
+                                <td>
+                                    <a asp-controller="Contact" asp-action="Delete" asp-route-id="@message.Id" class="btn btn-primary">Edit</a>
+                                    <a asp-controller="Contact" asp-action="Answer" asp-route-id="@message.Id" class="btn btn-primary">Details</a>
+                                </td>
+                            </tr>
                         </div>
+                        
                     </div>
                 }
             </div>

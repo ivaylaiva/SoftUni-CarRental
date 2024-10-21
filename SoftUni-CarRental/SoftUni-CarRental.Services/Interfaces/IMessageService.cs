@@ -6,6 +6,6 @@ namespace SoftUni_CarRental.Services.Interfaces
     public interface IMessageService
     {
         Task AddMessageAsync(MessageFormViewModel model);
-        IEnumerable<MessageFormViewModel> GetAllMessages();
+        Task<IEnumerable<AllMessagesViewModel>> GetAllMessages();
     }
 }
